@@ -1,0 +1,70 @@
+{
+  "name": "sc-scoreboards",
+  "version": "0.0.1-beta.6",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "dev": "tsc && node ./lib/demo/index.js",
+    "build": "git clean -Xdf && yarn install && tsc",
+    "build:watch": "tsc --watch",
+    "test": "jest",
+    "test-coverage": "jest --collect-coverage",
+    "reg": "npm set registry http://npm.lumigame.com",
+    "semantic-release": "semantic-release",
+    "betaver": "npm version prerelease --preid beta",
+    "pubbeta": "npm publish --registry http://npm.lumigame.com --tag beta"
+  },
+  "author": {
+    "email": "pentagon@luminetsoft.com",
+    "name": "pentagon"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/gitlab": "^6.0.4",
+    "@semantic-release/npm": "^7.0.5",
+    "@semantic-release/release-notes-generator": "^9.0.1",
+    "@types/jest": "^26.0.23",
+    "@types/lodash": "^4.14.182",
+    "@types/node": "^15.12.2",
+    "husky": "^4.2.5",
+    "install": "^0.13.0",
+    "jest": "^27.0.6",
+    "jest-extended": "^0.11.5",
+    "jest-micro-auto-stub": "^1.0.7",
+    "jest-sonar-reporter": "^2.0.0",
+    "sc-semantic-release": "^1.2.0",
+    "semantic-release": "^17.2.1",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.3.2"
+  },
+  "jestSonar": {
+    "reportPath": "reports",
+    "reportFile": "test-reporter.xml",
+    "indent": 4
+  },
+  "files": [
+    "src/",
+    "lib/"
+  ],
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "release": {
+    "extends": [
+      "sc-semantic-release"
+    ]
+  }
+}

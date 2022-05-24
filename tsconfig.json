@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "module": "CommonJS",
+    "declaration": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "downlevelIteration": true
+  },
+  "watchOptions": {
+    "excludeDirectories": ["lib/*"]
+  }
+}
