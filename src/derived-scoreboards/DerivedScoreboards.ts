@@ -9,8 +9,6 @@ interface DerivedScoreboardPoint {
 }
 
 interface IndexItem {
-  readonly rowIndex: number;
-  readonly columnIndex: number;
   readonly order: number;
   readonly parentColumn: number;
 }
@@ -25,6 +23,9 @@ export class DerivedScoreboards<SettlementResult> {
   private readonly cockroachPigKey = "cockroachPig";
 
   private bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][];
+  private indexArr: IndexItem[] = [];
+  private lengthArr: number[] = [];
+  private rawDataArr: boolean[][] = [];
 
   constructor(options: DragonTailBoardOptions) {
     this.bigEyeBoy = new DragonTailBoard(options);
@@ -35,6 +36,7 @@ export class DerivedScoreboards<SettlementResult> {
 
   update(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][]) {
     this.bigRoadData = bigRoadData;
+    this.convertDataFromBigRoadData(bigRoadData);
     this.updateBigEyeBoy();
     this.updateSmallRoad();
     this.updateCockroachPig();
@@ -52,49 +54,41 @@ export class DerivedScoreboards<SettlementResult> {
     }
   }
 
-  generateDerivedScoreboardsData(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][], colGap: number) {
+  convertDataFromBigRoadData(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][]) {
+    this.indexArr = [];
+    this.lengthArr = [];
+    this.rawDataArr = [];
     const maxColumnCount = Math.max(0, ...bigRoadData.map((row) => row.length));
-
-    const indexArr: IndexItem[] = [];
-    const lengthArr: number[] = [];
-    const rawDataArr: boolean[][] = [];
-
-    let beginIndex: number = this.getBeginIndexOfDerivedScoreboard(bigRoadData, colGap);
-    if (beginIndex === -1) return [];
 
     for (let columnIndex = 0; columnIndex < maxColumnCount; columnIndex++) {
       let currentLength = 0;
       const rawData = [];
-      for (let rowIndex = 0; rowIndex < bigRoadData.length; rowIndex++) {
-        const item = bigRoadData[rowIndex][columnIndex];
+      for (const element of bigRoadData) {
+        const item = element[columnIndex];
         if (item.status !== undefined) {
           if (item.parentColumn === columnIndex) {
             currentLength += 1;
             rawData.push(item.status);
           } else {
-            lengthArr[item.parentColumn] += 1;
-            rawDataArr[item.parentColumn].push(item.status);
+            this.lengthArr[item.parentColumn] += 1;
+            this.rawDataArr[item.parentColumn].push(item.status);
           }
-          indexArr.push({
-            rowIndex: rowIndex,
-            columnIndex: columnIndex,
+          this.indexArr.push({
             parentColumn: item.parentColumn,
             order: item.index,
           });
         }
       }
-      rawDataArr.push(rawData);
-      lengthArr.push(currentLength);
+      this.rawDataArr.push(rawData);
+      this.lengthArr.push(currentLength);
     }
-
-    return this.compareWithOtherCol(rawDataArr, indexArr, lengthArr, beginIndex, colGap);
+    this.indexArr.sort((a, b) => a.order - b.order);
   }
 
-  compareWithOtherCol(rawDataArr: boolean[][], indexArr: IndexItem[], lengthArr: number[], beginIndex: number, colGap: number) {
+  generateDerivedScoreboardsData(rawDataArr: boolean[][], indexArr: IndexItem[], lengthArr: number[], beginIndex: number, colGap: number) {
     const result: boolean[] = [];
     let currentCol = 0;
     let currentRow = 0;
-    indexArr.sort((a, b) => a.order - b.order);
     indexArr.forEach((item) => {
       if (currentCol === item.parentColumn) {
         currentRow += 1;
@@ -116,17 +110,26 @@ export class DerivedScoreboards<SettlementResult> {
   }
 
   updateBigEyeBoy() {
-    const data = this.generateDerivedScoreboardsData(this.bigRoadData, 1);
+    const colGap = 1;
+    const beginIndex = this.getBeginIndexOfDerivedScoreboard(this.bigRoadData, colGap);
+    const data =
+      beginIndex === -1 ? [] : this.generateDerivedScoreboardsData(this.rawDataArr, this.indexArr, this.lengthArr, beginIndex, colGap);
     this.updateBoard(data, this.bigEyeBoyKey);
   }
 
   updateSmallRoad() {
-    const data = this.generateDerivedScoreboardsData(this.bigRoadData, 2);
+    const colGap = 2;
+    const beginIndex = this.getBeginIndexOfDerivedScoreboard(this.bigRoadData, colGap);
+    const data =
+      beginIndex === -1 ? [] : this.generateDerivedScoreboardsData(this.rawDataArr, this.indexArr, this.lengthArr, beginIndex, colGap);
     this.updateBoard(data, this.smallRoadKey);
   }
 
   updateCockroachPig() {
-    const data = this.generateDerivedScoreboardsData(this.bigRoadData, 3);
+    const colGap = 3;
+    const beginIndex = this.getBeginIndexOfDerivedScoreboard(this.bigRoadData, colGap);
+    const data =
+      beginIndex === -1 ? [] : this.generateDerivedScoreboardsData(this.rawDataArr, this.indexArr, this.lengthArr, beginIndex, colGap);
     this.updateBoard(data, this.cockroachPigKey);
   }
 
@@ -155,6 +158,38 @@ export class DerivedScoreboards<SettlementResult> {
       }
 
       result.push(rowData);
+    }
+
+    return result;
+  }
+
+  getPrediction(isPositive: boolean) {
+    let rawDataArr: boolean[][] = _.cloneDeep(this.rawDataArr);
+    let indexArr: IndexItem[] = _.cloneDeep(this.indexArr);
+    let lengthArr: number[] = _.cloneDeep(this.lengthArr);
+    const lastItem = this.rawDataArr[this.rawDataArr.length - 1][0];
+    if (isPositive === lastItem) {
+      rawDataArr[rawDataArr.length - 1].push(isPositive);
+      indexArr.push({
+        order: indexArr.length + 1,
+        parentColumn: indexArr[indexArr.length - 1].parentColumn,
+      });
+      lengthArr[lengthArr.length - 1] = lengthArr[lengthArr.length - 1] + 1;
+    } else {
+      rawDataArr.push([isPositive]);
+      indexArr.push({
+        order: indexArr.length + 1,
+        parentColumn: indexArr[indexArr.length - 1].parentColumn + 1,
+      });
+      lengthArr.push(1);
+    }
+
+    const result = [];
+    for (let colGap = 1; colGap <= 3; colGap++) {
+      const beginIndex: number = this.getBeginIndexOfDerivedScoreboard(this.bigRoadData, colGap);
+      if (beginIndex === -1) result.push(undefined);
+      const data = this.generateDerivedScoreboardsData(rawDataArr, indexArr, lengthArr, beginIndex, colGap);
+      result.push(data[data.length - 1]);
     }
 
     return result;

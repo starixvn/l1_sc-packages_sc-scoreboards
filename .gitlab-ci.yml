@@ -8,4 +8,4 @@ include:
     file: "sonarqube/sonarqube.gitlab-ci.yml"
   - project: "ci/common-ci"
     ref: master
-    file: "npm/publish-npm.gitlab-ci.yml"
+    file: "npm/publish-npm-ts.gitlab-ci.yml"

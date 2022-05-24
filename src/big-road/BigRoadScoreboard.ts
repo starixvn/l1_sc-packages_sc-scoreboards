@@ -54,11 +54,11 @@ export class BigRoadScoreboard<InputType> {
 
       for (let column = 0; column < width; column++) {
         const status = this.dragonTailBoard.getStatus(column, row);
-        const index = this.dragonTailBoard.getIndex(column, row) || -1;
-        const parentColumn = this.dragonTailBoard.getParentColumn(column, row) || 0;
+        const index = this.dragonTailBoard.getIndex(column, row) ?? -1;
+        const parentColumn = this.dragonTailBoard.getParentColumn(column, row) ?? -1;
 
         rowData.push({
-          data: index !== undefined ? groups[index] : [],
+          data: index !== -1 ? groups[index] : [],
           x: column,
           y: row,
           status,

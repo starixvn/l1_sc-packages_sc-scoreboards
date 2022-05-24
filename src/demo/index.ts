@@ -15,6 +15,7 @@ export const start = () => {
   const bigRoadData = bigRoad.rows();
   const derivedScoreboards = new DerivedScoreboards({ height: 6 });
   derivedScoreboards.update(bigRoadData);
+  console.log(bigRoadData);
   consoleLogTable(bigRoadData);
   console.log("---------- big eye boy");
   consoleLogTable(derivedScoreboards.getScoreboardData("bigEyeBoy"));
@@ -22,7 +23,10 @@ export const start = () => {
   consoleLogTable(derivedScoreboards.getScoreboardData("smallRoad"));
   console.log("---------- cockroach pig");
   consoleLogTable(derivedScoreboards.getScoreboardData("cockroachPig"));
-  console.log("----------");
+  console.log("---------- predictor board with true");
+  console.log(derivedScoreboards.getPrediction(true));
+  console.log("---------- predictor board with false");
+  console.log(derivedScoreboards.getPrediction(false));
 };
 
 start();

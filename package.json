@@ -1,12 +1,12 @@
 {
   "name": "sc-scoreboards",
-  "version": "0.0.1-beta.3",
+  "version": "0.0.1-beta.6",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "dev": "tsc && node ./lib/demo/index.js",
-    "build": "git clean -Xdf && npm install && tsc",
+    "build": "git clean -Xdf && yarn install && tsc",
     "build:watch": "tsc --watch",
     "test": "jest",
     "test-coverage": "jest --collect-coverage",
@@ -66,8 +66,5 @@
     "extends": [
       "sc-semantic-release"
     ]
-  },
-  "dependencies": {
-    "lodash": "^4.17.21"
   }
 }
