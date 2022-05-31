@@ -1,3 +1,10 @@
+## [1.0.1](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.0.0...v1.0.1) (2022-05-31)
+
+
+### Bug Fixes
+
+* add unit test ([668cb69](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/668cb69136fccc86bab931bddd13b063a2367111))
+
 # 1.0.0 (2022-05-24)
 
 
