@@ -8,6 +8,8 @@
     "strict": true,
     "downlevelIteration": true
   },
+  "include": ["src/**/*.ts"],
+  "exclude": ["unit-tests"],
   "watchOptions": {
     "excludeDirectories": ["lib/*"]
   }

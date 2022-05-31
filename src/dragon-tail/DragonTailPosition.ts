@@ -12,7 +12,7 @@ export class DragonTailPosition {
   constructor(options: DragonTailPositionOptions) {
     this.x = options.x;
     this.y = options.y;
-    this.parentColumn = options.parentColumn || options.x;
+    this.parentColumn = options.parentColumn ?? options.x;
   }
 
   static getInstance(x: number, y: number) {
