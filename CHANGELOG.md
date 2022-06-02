@@ -1,3 +1,10 @@
+## [1.0.2](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.0.1...v1.0.2) (2022-06-02)
+
+
+### Bug Fixes
+
+* update getBeginIndexOfDerivedScoreboard for preditor board ([f57cb6c](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/f57cb6c40b1bbef5dafe1138e074482d5f13ec5a))
+
 ## [1.0.1](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.0.0...v1.0.1) (2022-05-31)
 
 
