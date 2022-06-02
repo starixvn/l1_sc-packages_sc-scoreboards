@@ -2,7 +2,7 @@ import { BigRoadScoreboardPoint } from "../big-road/BigRoadScoreboard";
 import { DragonTailBoard, DragonTailBoardOptions } from "../dragon-tail";
 import * as _ from "lodash";
 
-interface DerivedScoreboardPoint {
+export interface DerivedScoreboardPoint {
   column: number;
   row: number;
   status: boolean | undefined;
@@ -42,16 +42,29 @@ export class DerivedScoreboards<SettlementResult> {
     this.updateCockroachPig();
   }
 
-  getBeginIndexOfDerivedScoreboard(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][], colGap: number): number {
-    const item1 = bigRoadData[1][colGap];
-    const item2 = bigRoadData[0][colGap + 1];
-    if (item1.status !== undefined) {
-      return item1.index;
-    } else if (item2.status !== undefined) {
-      return item2.index;
+  getBeginIndexOfDerivedScoreboard(rawDataArr: boolean[][], colGap: number): number {
+    const item1 = rawDataArr[colGap][1];
+    const item2 = rawDataArr[colGap + 1][0];
+    if (item1 !== undefined) {
+      let index = 0;
+      let column = colGap;
+      while (column > 0) {
+        index += rawDataArr[column - 1].length;
+        column--;
+      }
+      return index + 1;
     } else {
-      return -1;
+      if (item2 !== undefined) {
+        let index = 0;
+        let column = colGap;
+        while (column >= 0) {
+          index += rawDataArr[column].length;
+          column--;
+        }
+        return index;
+      }
     }
+    return -1;
   }
 
   convertDataFromBigRoadData(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][]) {
@@ -111,7 +124,7 @@ export class DerivedScoreboards<SettlementResult> {
 
   updateBigEyeBoy() {
     const colGap = 1;
-    const beginIndex = this.getBeginIndexOfDerivedScoreboard(this.bigRoadData, colGap);
+    const beginIndex = this.getBeginIndexOfDerivedScoreboard(this.rawDataArr, colGap);
     const data =
       beginIndex === -1 ? [] : this.generateDerivedScoreboardsData(this.rawDataArr, this.indexArr, this.lengthArr, beginIndex, colGap);
     this.updateBoard(data, this.bigEyeBoyKey);
@@ -119,7 +132,7 @@ export class DerivedScoreboards<SettlementResult> {
 
   updateSmallRoad() {
     const colGap = 2;
-    const beginIndex = this.getBeginIndexOfDerivedScoreboard(this.bigRoadData, colGap);
+    const beginIndex = this.getBeginIndexOfDerivedScoreboard(this.rawDataArr, colGap);
     const data =
       beginIndex === -1 ? [] : this.generateDerivedScoreboardsData(this.rawDataArr, this.indexArr, this.lengthArr, beginIndex, colGap);
     this.updateBoard(data, this.smallRoadKey);
@@ -127,7 +140,7 @@ export class DerivedScoreboards<SettlementResult> {
 
   updateCockroachPig() {
     const colGap = 3;
-    const beginIndex = this.getBeginIndexOfDerivedScoreboard(this.bigRoadData, colGap);
+    const beginIndex = this.getBeginIndexOfDerivedScoreboard(this.rawDataArr, colGap);
     const data =
       beginIndex === -1 ? [] : this.generateDerivedScoreboardsData(this.rawDataArr, this.indexArr, this.lengthArr, beginIndex, colGap);
     this.updateBoard(data, this.cockroachPigKey);
@@ -186,7 +199,7 @@ export class DerivedScoreboards<SettlementResult> {
 
     const result = [];
     for (let colGap = 1; colGap <= 3; colGap++) {
-      const beginIndex: number = this.getBeginIndexOfDerivedScoreboard(this.bigRoadData, colGap);
+      const beginIndex: number = this.getBeginIndexOfDerivedScoreboard(rawDataArr, colGap);
       if (beginIndex === -1) result.push(undefined);
       const data = this.generateDerivedScoreboardsData(rawDataArr, indexArr, lengthArr, beginIndex, colGap);
       result.push(data[data.length - 1]);

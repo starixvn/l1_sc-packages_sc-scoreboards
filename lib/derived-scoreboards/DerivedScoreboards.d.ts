@@ -1,6 +1,6 @@
 import { BigRoadScoreboardPoint } from "../big-road/BigRoadScoreboard";
 import { DragonTailBoardOptions } from "../dragon-tail";
-interface DerivedScoreboardPoint {
+export interface DerivedScoreboardPoint {
     column: number;
     row: number;
     status: boolean | undefined;
@@ -22,7 +22,7 @@ export declare class DerivedScoreboards<SettlementResult> {
     private rawDataArr;
     constructor(options: DragonTailBoardOptions);
     update(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][]): void;
-    getBeginIndexOfDerivedScoreboard(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][], colGap: number): number;
+    getBeginIndexOfDerivedScoreboard(rawDataArr: boolean[][], colGap: number): number;
     convertDataFromBigRoadData(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][]): void;
     generateDerivedScoreboardsData(rawDataArr: boolean[][], indexArr: IndexItem[], lengthArr: number[], beginIndex: number, colGap: number): boolean[];
     updateBigEyeBoy(): void;
