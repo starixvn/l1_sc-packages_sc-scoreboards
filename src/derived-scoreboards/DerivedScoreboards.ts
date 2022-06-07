@@ -22,7 +22,6 @@ export class DerivedScoreboards<SettlementResult> {
   private readonly smallRoadKey = "smallRoad";
   private readonly cockroachPigKey = "cockroachPig";
 
-  private bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][];
   private indexArr: IndexItem[] = [];
   private lengthArr: number[] = [];
   private rawDataArr: boolean[][] = [];
@@ -31,11 +30,9 @@ export class DerivedScoreboards<SettlementResult> {
     this.bigEyeBoy = new DragonTailBoard(options);
     this.smallRoad = new DragonTailBoard(options);
     this.cockroachPig = new DragonTailBoard(options);
-    this.bigRoadData = [];
   }
 
   update(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][]) {
-    this.bigRoadData = bigRoadData;
     this.convertDataFromBigRoadData(bigRoadData);
     this.updateBigEyeBoy();
     this.updateSmallRoad();
@@ -43,8 +40,8 @@ export class DerivedScoreboards<SettlementResult> {
   }
 
   getBeginIndexOfDerivedScoreboard(rawDataArr: boolean[][], colGap: number): number {
-    const item1 = rawDataArr[colGap][1];
-    const item2 = rawDataArr[colGap + 1][0];
+    const item1 = rawDataArr[colGap]?.[1];
+    const item2 = rawDataArr[colGap + 1]?.[0];
     if (item1 !== undefined) {
       let index = 0;
       let column = colGap;
@@ -148,6 +145,7 @@ export class DerivedScoreboards<SettlementResult> {
 
   updateBoard(data: boolean[], boardKey: "bigEyeBoy" | "smallRoad" | "cockroachPig") {
     const lengthGroups = data.length;
+    this[boardKey].clear();
     for (let i = 0; i < lengthGroups; i++) {
       const isEndTail = data[i] != data[i + 1];
       this[boardKey].addNode(data[i], isEndTail);
@@ -200,9 +198,12 @@ export class DerivedScoreboards<SettlementResult> {
     const result = [];
     for (let colGap = 1; colGap <= 3; colGap++) {
       const beginIndex: number = this.getBeginIndexOfDerivedScoreboard(rawDataArr, colGap);
-      if (beginIndex === -1) result.push(undefined);
-      const data = this.generateDerivedScoreboardsData(rawDataArr, indexArr, lengthArr, beginIndex, colGap);
-      result.push(data[data.length - 1]);
+      if (beginIndex === -1) {
+        result.push(undefined);
+      } else {
+        const data = this.generateDerivedScoreboardsData(rawDataArr, indexArr, lengthArr, beginIndex, colGap);
+        result.push(data[data.length - 1]);
+      }
     }
 
     return result;
