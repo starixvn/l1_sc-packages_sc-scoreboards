@@ -1,3 +1,10 @@
+## [1.0.3](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.0.2...v1.0.3) (2022-06-07)
+
+
+### Bug Fixes
+
+* fix bug DerivedScoreboards when not enough data ([a88888b](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/a88888bc27d27bd45d771eaea8f8151c5a7f4e63))
+
 ## [1.0.2](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.0.1...v1.0.2) (2022-06-02)
 
 
