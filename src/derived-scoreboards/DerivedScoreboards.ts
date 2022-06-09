@@ -33,7 +33,7 @@ export class DerivedScoreboards<SettlementResult> {
   }
 
   update(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][]) {
-    this.convertDataFromBigRoadData(bigRoadData);
+    this.transformDataFromBigRoadData(bigRoadData);
     this.updateBigEyeBoy();
     this.updateSmallRoad();
     this.updateCockroachPig();
@@ -64,7 +64,7 @@ export class DerivedScoreboards<SettlementResult> {
     return -1;
   }
 
-  convertDataFromBigRoadData(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][]) {
+  transformDataFromBigRoadData(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][]) {
     this.indexArr = [];
     this.lengthArr = [];
     this.rawDataArr = [];
@@ -110,8 +110,8 @@ export class DerivedScoreboards<SettlementResult> {
         if (currentRow === 0) {
           result.push(lengthArr[currentCol - colGap - 1] === lengthArr[currentCol - 1]);
         } else {
-          const lastItem = rawDataArr[currentCol - colGap][currentRow - 1];
-          const targetItem = rawDataArr[currentCol - colGap][currentRow];
+          const lastItem = rawDataArr[currentCol - colGap]?.[currentRow - 1];
+          const targetItem = rawDataArr[currentCol - colGap]?.[currentRow];
           result.push(lastItem === undefined || targetItem !== undefined);
         }
       }
@@ -178,16 +178,21 @@ export class DerivedScoreboards<SettlementResult> {
     let rawDataArr: boolean[][] = _.cloneDeep(this.rawDataArr);
     let indexArr: IndexItem[] = _.cloneDeep(this.indexArr);
     let lengthArr: number[] = _.cloneDeep(this.lengthArr);
-    const lastItem = this.rawDataArr[this.rawDataArr.length - 1][0];
+    const lastIndex = [...this.rawDataArr].reverse().findIndex((a) => a.length > 0);
+    const lastItem = this.rawDataArr[this.rawDataArr.length - 1 - lastIndex]?.[0];
     if (isPositive === lastItem) {
-      rawDataArr[rawDataArr.length - 1].push(isPositive);
+      rawDataArr[rawDataArr.length - 1 - lastIndex].push(isPositive);
       indexArr.push({
         order: indexArr.length + 1,
         parentColumn: indexArr[indexArr.length - 1].parentColumn,
       });
       lengthArr[lengthArr.length - 1] = lengthArr[lengthArr.length - 1] + 1;
     } else {
-      rawDataArr.push([isPositive]);
+      if (rawDataArr[rawDataArr.length - lastIndex]) {
+        rawDataArr[rawDataArr.length - lastIndex].push(isPositive);
+      } else {
+        rawDataArr.push([isPositive]);
+      }
       indexArr.push({
         order: indexArr.length + 1,
         parentColumn: indexArr[indexArr.length - 1].parentColumn + 1,

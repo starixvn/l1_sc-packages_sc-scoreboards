@@ -7,7 +7,7 @@ export const start = () => {
   // blue: 1
   // red: 3
   // tie: 2
-  const dataTest = [2, 1, 1, 1, 1, 1, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 3, 3, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 3, 1, 1];
+  const dataTest = [3, 1, 1, 1, 1, 1, 1, 1, 1];
   const settlementResult = getSettleResult(dataTest);
   const converter = new Converter();
   const bigRoad = new BigRoadScoreboard({ converter, height: 6 });
@@ -19,6 +19,7 @@ export const start = () => {
   consoleLogTable(bigRoadData);
   console.log("---------- big eye boy");
   consoleLogTable(derivedScoreboards.getScoreboardData("bigEyeBoy"));
+  console.log(derivedScoreboards.getScoreboardData("bigEyeBoy"));
   console.log("---------- small road");
   consoleLogTable(derivedScoreboards.getScoreboardData("smallRoad"));
   console.log("---------- cockroach pig");

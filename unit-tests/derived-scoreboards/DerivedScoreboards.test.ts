@@ -525,4 +525,231 @@ describe("DerivedScoreboards test", () => {
       expect(actual).toStrictEqual([undefined, undefined, undefined]);
     });
   });
+
+  describe("when not enough data for smallRoad and cockroachPig and exits dragon tails", () => {
+    beforeAll(() => {
+      const bigData3 = [
+        [
+          {
+            data: [],
+            x: 0,
+            y: 0,
+            status: true,
+            index: 0,
+            parentColumn: 0,
+          },
+          {
+            data: [],
+            x: 1,
+            y: 0,
+            status: false,
+            index: 1,
+            parentColumn: 1,
+          },
+          {
+            data: [],
+            x: 2,
+            y: 0,
+            status: undefined,
+            index: -1,
+            parentColumn: -1,
+          },
+          {
+            data: [],
+            x: 3,
+            y: 0,
+            status: undefined,
+            index: -1,
+            parentColumn: -1,
+          },
+        ],
+        [
+          {
+            data: [],
+            x: 0,
+            y: 1,
+            status: undefined,
+            index: -1,
+            parentColumn: -1,
+          },
+          {
+            data: [],
+            x: 1,
+            y: 1,
+            status: false,
+            index: 2,
+            parentColumn: 1,
+          },
+          {
+            data: [],
+            x: 2,
+            y: 1,
+            status: undefined,
+            index: -1,
+            parentColumn: -1,
+          },
+          {
+            data: [],
+            x: 3,
+            y: 1,
+            status: undefined,
+            index: -1,
+            parentColumn: -1,
+          },
+        ],
+        [
+          {
+            data: [],
+            x: 0,
+            y: 2,
+            status: undefined,
+            index: -1,
+            parentColumn: -1,
+          },
+          {
+            data: [],
+            x: 1,
+            y: 2,
+            status: false,
+            index: 3,
+            parentColumn: 1,
+          },
+          {
+            data: [],
+            x: 2,
+            y: 2,
+            status: undefined,
+            index: -1,
+            parentColumn: -1,
+          },
+          {
+            data: [],
+            x: 3,
+            y: 2,
+            status: undefined,
+            index: -1,
+            parentColumn: -1,
+          },
+        ],
+        [
+          {
+            data: [],
+            x: 0,
+            y: 3,
+            status: undefined,
+            index: -1,
+            parentColumn: -1,
+          },
+          {
+            data: [],
+            x: 1,
+            y: 3,
+            status: false,
+            index: 4,
+            parentColumn: 1,
+          },
+          {
+            data: [],
+            x: 2,
+            y: 3,
+            status: undefined,
+            index: -1,
+            parentColumn: -1,
+          },
+          {
+            data: [],
+            x: 3,
+            y: 3,
+            status: undefined,
+            index: -1,
+            parentColumn: -1,
+          },
+        ],
+        [
+          {
+            data: [],
+            x: 0,
+            y: 4,
+            status: undefined,
+            index: -1,
+            parentColumn: -1,
+          },
+          {
+            data: [],
+            x: 1,
+            y: 4,
+            status: false,
+            index: 5,
+            parentColumn: 1,
+          },
+          {
+            data: [],
+            x: 2,
+            y: 4,
+            status: undefined,
+            index: -1,
+            parentColumn: -1,
+          },
+          {
+            data: [],
+            x: 3,
+            y: 4,
+            status: undefined,
+            index: -1,
+            parentColumn: -1,
+          },
+        ],
+        [
+          {
+            data: [],
+            x: 0,
+            y: 5,
+            status: undefined,
+            index: -1,
+            parentColumn: -1,
+          },
+          {
+            data: [],
+            x: 1,
+            y: 4,
+            status: false,
+            index: 6,
+            parentColumn: 1,
+          },
+          {
+            data: [],
+            x: 2,
+            y: 5,
+            status: false,
+            index: 7,
+            parentColumn: 1,
+          },
+          {
+            data: [],
+            x: 3,
+            y: 5,
+            status: false,
+            index: 8,
+            parentColumn: 1,
+          },
+        ],
+      ];
+      derivedScoreboards.update(bigData3);
+    });
+    it("should return empty when get prediction with true", () => {
+      // act
+      const actual = derivedScoreboards.getPrediction(true);
+
+      // assert
+      expect(actual).toStrictEqual([false, undefined, undefined]);
+    });
+
+    it("should return empty when get prediction with false", () => {
+      // act
+      const actual = derivedScoreboards.getPrediction(false);
+
+      // assert
+      expect(actual).toStrictEqual([true, undefined, undefined]);
+    });
+  });
 });

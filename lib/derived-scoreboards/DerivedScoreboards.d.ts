@@ -16,14 +16,13 @@ export declare class DerivedScoreboards<SettlementResult> {
     private readonly bigEyeBoyKey;
     private readonly smallRoadKey;
     private readonly cockroachPigKey;
-    private bigRoadData;
     private indexArr;
     private lengthArr;
     private rawDataArr;
     constructor(options: DragonTailBoardOptions);
     update(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][]): void;
     getBeginIndexOfDerivedScoreboard(rawDataArr: boolean[][], colGap: number): number;
-    convertDataFromBigRoadData(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][]): void;
+    transformDataFromBigRoadData(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][]): void;
     generateDerivedScoreboardsData(rawDataArr: boolean[][], indexArr: IndexItem[], lengthArr: number[], beginIndex: number, colGap: number): boolean[];
     updateBigEyeBoy(): void;
     updateSmallRoad(): void;
