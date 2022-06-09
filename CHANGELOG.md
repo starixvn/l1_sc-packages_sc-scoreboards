@@ -1,3 +1,10 @@
+## [1.0.4](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.0.3...v1.0.4) (2022-06-09)
+
+
+### Bug Fixes
+
+* fix getPrediction ([04e0058](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/04e00584764ab891e969945e36c20728280c5d53))
+
 ## [1.0.3](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.0.2...v1.0.3) (2022-06-07)
 
 
