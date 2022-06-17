@@ -138,6 +138,80 @@ describe("big road test", () => {
     expect(actual).toStrictEqual(expected);
   });
 
+  it("should return expected data when only tie first", () => {
+    // arrange
+    const expected: any = [
+      [
+        {
+          index: 0,
+          x: 0,
+          y: 0,
+          status: false,
+          parentColumn: 0,
+          data: [{ banker: false, player: false, tie: true }],
+        },
+      ],
+      [
+        {
+          index: -1,
+          x: 0,
+          y: 1,
+          status: undefined,
+          parentColumn: -1,
+          data: [],
+        },
+      ],
+      [
+        {
+          index: -1,
+          x: 0,
+          y: 2,
+          status: undefined,
+          parentColumn: -1,
+          data: [],
+        },
+      ],
+      [
+        {
+          index: -1,
+          x: 0,
+          y: 3,
+          status: undefined,
+          parentColumn: -1,
+          data: [],
+        },
+      ],
+      [
+        {
+          index: -1,
+          x: 0,
+          y: 4,
+          status: undefined,
+          parentColumn: -1,
+          data: [],
+        },
+      ],
+      [
+        {
+          index: -1,
+          x: 0,
+          y: 5,
+          status: undefined,
+          parentColumn: -1,
+          data: [],
+        },
+      ],
+    ];
+    const dataTest = [2];
+    bigRoadScoreboard.initialize(getSettlementResult(dataTest));
+
+    // act
+    const actual = bigRoadScoreboard.rows();
+
+    // assert
+    expect(actual).toStrictEqual(expected);
+  });
+
   it("should return expected data when tie not first", () => {
     // arrange
     const expected: any = [

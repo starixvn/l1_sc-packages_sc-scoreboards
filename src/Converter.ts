@@ -19,7 +19,7 @@ export class Converter<T> implements IConverter<T> {
     const isSpecialGroup =
       firstGroup.length && firstGroup.filter((round) => (round as any)[this.specialKey()]).length === firstGroup.length;
 
-    if (isSpecialGroup) {
+    if (isSpecialGroup && groups.length > 1) {
       const secondGroup = groups[1] || [];
 
       groups.shift();
