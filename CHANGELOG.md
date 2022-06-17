@@ -1,3 +1,10 @@
+## [1.0.5](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.0.4...v1.0.5) (2022-06-17)
+
+
+### Bug Fixes
+
+* bug when round has only tie ([e4c2ef9](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/e4c2ef9d942b4a2a01331f36eeff2e8981a13d32))
+
 ## [1.0.4](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.0.3...v1.0.4) (2022-06-09)
 
 
