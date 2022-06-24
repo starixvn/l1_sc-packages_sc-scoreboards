@@ -1,3 +1,10 @@
+## [1.0.6](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.0.5...v1.0.6) (2022-06-24)
+
+
+### Bug Fixes
+
+* getPrediction return empty when data empty ([02f7f7e](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/02f7f7eea5be18551109e76528f17796bf687902))
+
 ## [1.0.5](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.0.4...v1.0.5) (2022-06-17)
 
 
