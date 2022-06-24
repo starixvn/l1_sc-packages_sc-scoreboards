@@ -175,6 +175,9 @@ export class DerivedScoreboards<SettlementResult> {
   }
 
   getPrediction(isPositive: boolean) {
+    if (this.rawDataArr.length < 2) {
+      return [undefined, undefined, undefined];
+    }
     let rawDataArr: boolean[][] = _.cloneDeep(this.rawDataArr);
     let indexArr: IndexItem[] = _.cloneDeep(this.indexArr);
     let lengthArr: number[] = _.cloneDeep(this.lengthArr);

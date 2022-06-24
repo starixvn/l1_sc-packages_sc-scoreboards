@@ -526,6 +526,61 @@ describe("DerivedScoreboards test", () => {
     });
   });
 
+  describe("when not enough data2", () => {
+    beforeAll(() => {
+      const bigData3 = [[], [], [], [], [], []];
+      derivedScoreboards.update(bigData3);
+    });
+
+    it("get bigEyeBoy should return empty", () => {
+      // act
+      const actual = derivedScoreboards.getScoreboardData("bigEyeBoy");
+
+      // assert
+      expect(actual).toStrictEqual([[], [], [], [], [], []]);
+    });
+
+    it("get smallRoad should return empty", () => {
+      // act
+      const actual = derivedScoreboards.getScoreboardData("smallRoad");
+
+      // assert
+      expect(actual).toStrictEqual([[], [], [], [], [], []]);
+    });
+
+    it("get cockroachPig should return empty", () => {
+      // act
+      const actual = derivedScoreboards.getScoreboardData("cockroachPig");
+
+      // assert
+      expect(actual).toStrictEqual([[], [], [], [], [], []]);
+    });
+
+    it("get cockroachPig should return empty", () => {
+      // act
+      const actual = derivedScoreboards.getScoreboardData("cockroachPig");
+
+      // assert
+      expect(actual).toStrictEqual([[], [], [], [], [], []]);
+    });
+
+    it("should return empty when get prediction with true", () => {
+      // act
+      const actual = derivedScoreboards.getPrediction(true);
+
+      // assert
+      expect(actual).toStrictEqual([undefined, undefined, undefined]);
+    });
+
+    it("should return empty when get prediction with false", () => {
+      // act
+      const actual = derivedScoreboards.getPrediction(false);
+
+      // assert
+      expect(actual).toStrictEqual([undefined, undefined, undefined]);
+    });
+  });
+
   describe("when not enough data for smallRoad and cockroachPig and exits dragon tails", () => {
     beforeAll(() => {
       const bigData3 = [
