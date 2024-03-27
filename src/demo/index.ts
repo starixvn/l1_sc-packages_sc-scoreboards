@@ -1,7 +1,7 @@
+import { BigRoadScoreboard } from "../big-road";
+import { Converter } from "../Converter";
 import { DerivedScoreboards } from "../derived-scoreboards";
-import { BigRoadScoreboard } from "../big-road/BigRoadScoreboard";
-import Converter from "./converter";
-import { getSettleResult, consoleLogTable } from "./helper";
+import { printAllTables, consoleLogTable, getSettleResult } from "./helper";
 
 export const start = () => {
   // blue: 1

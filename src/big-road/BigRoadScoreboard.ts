@@ -1,9 +1,11 @@
 import { IConverter } from "../IConverter";
 import { DragonTailBoard } from "../dragon-tail";
+import { GoodRoad, IGoodRoadDetector } from "../good-road";
 
 export interface BigRoadScoreboardOptions<T> {
   height: number;
   converter: IConverter<T>;
+  goodRoadDetectors?: IGoodRoadDetector[];
 }
 
 export interface BigRoadScoreboardPoint<T> {
@@ -19,6 +21,7 @@ export interface BigRoadScoreboardPoint<T> {
 export class BigRoadScoreboard<InputType> {
   private readonly dragonTailBoard: DragonTailBoard;
   private readonly converter: IConverter<InputType>;
+  private readonly goodRoadDetectors: IGoodRoadDetector[];
 
   private input: InputType[];
   private groups: boolean[];
@@ -28,6 +31,7 @@ export class BigRoadScoreboard<InputType> {
     this.converter = options.converter;
     this.input = [];
     this.groups = [];
+    this.goodRoadDetectors = options.goodRoadDetectors ?? [];
   }
 
   initialize(input: InputType[], hasBlinkNode = false): void {
@@ -82,6 +86,20 @@ export class BigRoadScoreboard<InputType> {
 
   height(): number {
     return this.dragonTailBoard.getHeight();
+  }
+
+  getGoodRoad(): GoodRoad {
+    return this.goodRoadDetectors.reduce((goodRoad, detector) => {
+      if (!this.isValidGoodRoad(goodRoad)) {
+        goodRoad = detector.detect(this.groups, this.dragonTailBoard);
+      }
+
+      return goodRoad;
+    }, {} as GoodRoad);
+  }
+
+  private isValidGoodRoad(goodRoad: GoodRoad) {
+    return goodRoad && goodRoad.x >= 0 && goodRoad.height >= 1 && goodRoad.width >= 1;
   }
 
   private loadDragonTailBoard(hasBlinkNode = false): void {
