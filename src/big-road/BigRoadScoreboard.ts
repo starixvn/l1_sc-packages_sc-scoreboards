@@ -13,7 +13,7 @@ export interface BigRoadScoreboardPoint<T> {
   data: T[];
   index: number;
   parentColumn: number;
-  isBlink: boolean;
+  isBlink?: boolean;
 }
 
 export class BigRoadScoreboard<InputType> {

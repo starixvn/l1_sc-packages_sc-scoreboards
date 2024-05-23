@@ -27,6 +27,7 @@ describe("big road test", () => {
             { banker: false, player: true, tie: false },
             { banker: false, player: false, tie: true },
           ],
+          isBlink: false,
         },
         {
           index: 2,
@@ -35,6 +36,7 @@ describe("big road test", () => {
           status: true,
           parentColumn: 1,
           data: [{ banker: true, player: false, tie: false }],
+          isBlink: false,
         },
       ],
       [
@@ -45,6 +47,7 @@ describe("big road test", () => {
           status: false,
           parentColumn: 0,
           data: [{ banker: false, player: true, tie: false }],
+          isBlink: false,
         },
         {
           index: -1,
@@ -53,6 +56,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -63,6 +67,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: -1,
@@ -71,6 +76,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -81,6 +87,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: -1,
@@ -89,6 +96,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -99,6 +107,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: -1,
@@ -107,6 +116,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -117,6 +127,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: -1,
@@ -125,6 +136,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
     ];
@@ -149,6 +161,7 @@ describe("big road test", () => {
           status: false,
           parentColumn: 0,
           data: [{ banker: false, player: false, tie: true }],
+          isBlink: false,
         },
       ],
       [
@@ -159,6 +172,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -169,6 +183,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -179,6 +194,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -189,6 +205,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -199,6 +216,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
     ];
@@ -223,6 +241,7 @@ describe("big road test", () => {
           status: false,
           parentColumn: 0,
           data: [{ banker: false, player: true, tie: false }],
+          isBlink: false,
         },
         {
           index: 2,
@@ -234,6 +253,7 @@ describe("big road test", () => {
             { banker: true, player: false, tie: false },
             { banker: false, player: false, tie: true },
           ],
+          isBlink: false,
         },
       ],
       [
@@ -244,6 +264,7 @@ describe("big road test", () => {
           status: false,
           parentColumn: 0,
           data: [{ banker: false, player: true, tie: false }],
+          isBlink: false,
         },
         {
           index: -1,
@@ -252,6 +273,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -262,6 +284,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: -1,
@@ -270,6 +293,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -280,6 +304,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: -1,
@@ -288,6 +313,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -298,6 +324,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: -1,
@@ -306,6 +333,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -316,6 +344,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: -1,
@@ -324,6 +353,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
     ];
@@ -348,6 +378,7 @@ describe("big road test", () => {
           status: false,
           parentColumn: 0,
           data: [{ banker: false, player: true, tie: false }],
+          isBlink: false,
         },
         {
           index: 2,
@@ -359,6 +390,7 @@ describe("big road test", () => {
             { banker: true, player: false, tie: false },
             { banker: false, player: false, tie: true },
           ],
+          isBlink: false,
         },
         {
           index: -1,
@@ -367,6 +399,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: -1,
@@ -375,6 +408,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -385,6 +419,7 @@ describe("big road test", () => {
           status: false,
           parentColumn: 0,
           data: [{ banker: false, player: true, tie: false }],
+          isBlink: false,
         },
         {
           index: 3,
@@ -393,6 +428,7 @@ describe("big road test", () => {
           status: true,
           parentColumn: 1,
           data: [{ banker: true, player: false, tie: false }],
+          isBlink: false,
         },
         {
           index: -1,
@@ -401,6 +437,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: -1,
@@ -409,6 +446,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -419,6 +457,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: 4,
@@ -427,6 +466,7 @@ describe("big road test", () => {
           status: true,
           parentColumn: 1,
           data: [{ banker: true, player: false, tie: false }],
+          isBlink: false,
         },
         {
           index: -1,
@@ -435,6 +475,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: -1,
@@ -443,6 +484,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -453,6 +495,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: 5,
@@ -461,6 +504,7 @@ describe("big road test", () => {
           status: true,
           parentColumn: 1,
           data: [{ banker: true, player: false, tie: false }],
+          isBlink: false,
         },
         {
           index: -1,
@@ -469,6 +513,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: -1,
@@ -477,6 +522,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -487,6 +533,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: 6,
@@ -495,6 +542,7 @@ describe("big road test", () => {
           status: true,
           parentColumn: 1,
           data: [{ banker: true, player: false, tie: false }],
+          isBlink: false,
         },
         {
           index: -1,
@@ -503,6 +551,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: -1,
@@ -511,6 +560,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
       ],
       [
@@ -521,6 +571,7 @@ describe("big road test", () => {
           status: undefined,
           parentColumn: -1,
           data: [],
+          isBlink: false,
         },
         {
           index: 7,
@@ -529,6 +580,7 @@ describe("big road test", () => {
           status: true,
           parentColumn: 1,
           data: [{ banker: true, player: false, tie: false }],
+          isBlink: false,
         },
         {
           index: 8,
@@ -537,6 +589,7 @@ describe("big road test", () => {
           status: true,
           parentColumn: 1,
           data: [{ banker: true, player: false, tie: false }],
+          isBlink: false,
         },
         {
           index: 9,
@@ -545,6 +598,7 @@ describe("big road test", () => {
           status: true,
           parentColumn: 1,
           data: [{ banker: true, player: false, tie: false }],
+          isBlink: false,
         },
       ],
     ];
@@ -566,70 +620,70 @@ describe("big road test", () => {
     ];
     const expected = [
       [
-        { index: 0, x: 0, y: 0, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 12, x: 1, y: 0, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 21, x: 2, y: 0, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 29, x: 3, y: 0, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 36, x: 4, y: 0, parentColumn: 4, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 42, x: 5, y: 0, parentColumn: 5, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 43, x: 6, y: 0, parentColumn: 5, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 44, x: 7, y: 0, parentColumn: 5, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 45, x: 8, y: 0, parentColumn: 5, status: true, data: [{ banker: true, player: false, tie: false }] },
+        { index: 0, x: 0, y: 0, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 12, x: 1, y: 0, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 21, x: 2, y: 0, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 29, x: 3, y: 0, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 36, x: 4, y: 0, parentColumn: 4, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 42, x: 5, y: 0, parentColumn: 5, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 43, x: 6, y: 0, parentColumn: 5, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 44, x: 7, y: 0, parentColumn: 5, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 45, x: 8, y: 0, parentColumn: 5, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
       ],
       [
-        { index: 1, x: 0, y: 1, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 13, x: 1, y: 1, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 22, x: 2, y: 1, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 30, x: 3, y: 1, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 37, x: 4, y: 1, parentColumn: 4, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 38, x: 5, y: 1, parentColumn: 4, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 39, x: 6, y: 1, parentColumn: 4, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 40, x: 7, y: 1, parentColumn: 4, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 41, x: 8, y: 1, parentColumn: 4, status: false, data: [{ banker: false, player: true, tie: false }] },
+        { index: 1, x: 0, y: 1, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 13, x: 1, y: 1, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 22, x: 2, y: 1, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 30, x: 3, y: 1, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 37, x: 4, y: 1, parentColumn: 4, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 38, x: 5, y: 1, parentColumn: 4, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 39, x: 6, y: 1, parentColumn: 4, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 40, x: 7, y: 1, parentColumn: 4, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 41, x: 8, y: 1, parentColumn: 4, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
       ],
       [
-        { index: 2, x: 0, y: 2, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 14, x: 1, y: 2, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 23, x: 2, y: 2, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 31, x: 3, y: 2, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 32, x: 4, y: 2, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 33, x: 5, y: 2, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 34, x: 6, y: 2, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 35, x: 7, y: 2, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: -1, x: 8, y: 2, parentColumn: -1, status: undefined, data: [] },
+        { index: 2, x: 0, y: 2, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 14, x: 1, y: 2, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 23, x: 2, y: 2, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 31, x: 3, y: 2, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 32, x: 4, y: 2, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 33, x: 5, y: 2, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 34, x: 6, y: 2, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 35, x: 7, y: 2, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: -1, x: 8, y: 2, parentColumn: -1, status: undefined, data: [], isBlink: false },
       ],
       [
-        { index: 3, x: 0, y: 3, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 15, x: 1, y: 3, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 24, x: 2, y: 3, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 25, x: 3, y: 3, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 26, x: 4, y: 3, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 27, x: 5, y: 3, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 28, x: 6, y: 3, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: -1, x: 7, y: 3, parentColumn: -1, status: undefined, data: [] },
-        { index: -1, x: 8, y: 3, parentColumn: -1, status: undefined, data: [] },
+        { index: 3, x: 0, y: 3, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 15, x: 1, y: 3, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 24, x: 2, y: 3, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 25, x: 3, y: 3, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 26, x: 4, y: 3, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 27, x: 5, y: 3, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 28, x: 6, y: 3, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: -1, x: 7, y: 3, parentColumn: -1, status: undefined, data: [], isBlink: false },
+        { index: -1, x: 8, y: 3, parentColumn: -1, status: undefined, data: [], isBlink: false },
       ],
       [
-        { index: 4, x: 0, y: 4, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 16, x: 1, y: 4, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 17, x: 2, y: 4, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 18, x: 3, y: 4, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 19, x: 4, y: 4, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 20, x: 5, y: 4, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: -1, x: 6, y: 4, parentColumn: -1, status: undefined, data: [] },
-        { index: -1, x: 7, y: 4, parentColumn: -1, status: undefined, data: [] },
-        { index: -1, x: 8, y: 4, parentColumn: -1, status: undefined, data: [] },
+        { index: 4, x: 0, y: 4, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 16, x: 1, y: 4, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 17, x: 2, y: 4, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 18, x: 3, y: 4, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 19, x: 4, y: 4, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 20, x: 5, y: 4, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: -1, x: 6, y: 4, parentColumn: -1, status: undefined, data: [], isBlink: false },
+        { index: -1, x: 7, y: 4, parentColumn: -1, status: undefined, data: [], isBlink: false },
+        { index: -1, x: 8, y: 4, parentColumn: -1, status: undefined, data: [], isBlink: false },
       ],
       [
-        { index: 5, x: 0, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 6, x: 1, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 7, x: 2, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 8, x: 3, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 9, x: 4, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 10, x: 5, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 11, x: 6, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: -1, x: 7, y: 5, parentColumn: -1, status: undefined, data: [] },
-        { index: -1, x: 8, y: 5, parentColumn: -1, status: undefined, data: [] },
+        { index: 5, x: 0, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 6, x: 1, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 7, x: 2, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 8, x: 3, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 9, x: 4, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 10, x: 5, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 11, x: 6, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: -1, x: 7, y: 5, parentColumn: -1, status: undefined, data: [], isBlink: false },
+        { index: -1, x: 8, y: 5, parentColumn: -1, status: undefined, data: [], isBlink: false },
       ],
     ];
     bigRoadScoreboard.initialize(getSettlementResult(data));
@@ -648,52 +702,52 @@ describe("big road test", () => {
     const newResult = { banker: true, player: false, tie: false };
     const expected = [
       [
-        { index: 0, x: 0, y: 0, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 7, x: 1, y: 0, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 14, x: 2, y: 0, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 15, x: 3, y: 0, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: -1, x: 4, y: 0, parentColumn: -1, status: undefined, data: [] },
-        { index: -1, x: 5, y: 0, parentColumn: -1, status: undefined, data: [] },
+        { index: 0, x: 0, y: 0, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 7, x: 1, y: 0, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 14, x: 2, y: 0, parentColumn: 2, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 15, x: 3, y: 0, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: -1, x: 4, y: 0, parentColumn: -1, status: undefined, data: [], isBlink: false },
+        { index: -1, x: 5, y: 0, parentColumn: -1, status: undefined, data: [], isBlink: false },
       ],
       [
-        { index: 1, x: 0, y: 1, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 8, x: 1, y: 1, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: -1, x: 2, y: 1, parentColumn: -1, status: undefined, data: [] },
-        { index: 16, x: 3, y: 1, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: -1, x: 4, y: 1, parentColumn: -1, status: undefined, data: [] },
-        { index: -1, x: 5, y: 1, parentColumn: -1, status: undefined, data: [] },
+        { index: 1, x: 0, y: 1, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 8, x: 1, y: 1, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: -1, x: 2, y: 1, parentColumn: -1, status: undefined, data: [], isBlink: false },
+        { index: 16, x: 3, y: 1, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: -1, x: 4, y: 1, parentColumn: -1, status: undefined, data: [], isBlink: false },
+        { index: -1, x: 5, y: 1, parentColumn: -1, status: undefined, data: [], isBlink: false },
       ],
       [
-        { index: 2, x: 0, y: 2, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 9, x: 1, y: 2, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: -1, x: 2, y: 2, parentColumn: -1, status: undefined, data: [] },
-        { index: 17, x: 3, y: 2, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: -1, x: 4, y: 2, parentColumn: -1, status: undefined, data: [] },
-        { index: -1, x: 5, y: 2, parentColumn: -1, status: undefined, data: [] },
+        { index: 2, x: 0, y: 2, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 9, x: 1, y: 2, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: -1, x: 2, y: 2, parentColumn: -1, status: undefined, data: [], isBlink: false },
+        { index: 17, x: 3, y: 2, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: -1, x: 4, y: 2, parentColumn: -1, status: undefined, data: [], isBlink: false },
+        { index: -1, x: 5, y: 2, parentColumn: -1, status: undefined, data: [], isBlink: false },
       ],
       [
-        { index: 3, x: 0, y: 3, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 10, x: 1, y: 3, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: -1, x: 2, y: 3, parentColumn: -1, status: undefined, data: [] },
-        { index: 18, x: 3, y: 3, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: -1, x: 4, y: 3, parentColumn: -1, status: undefined, data: [] },
-        { index: -1, x: 5, y: 3, parentColumn: -1, status: undefined, data: [] },
+        { index: 3, x: 0, y: 3, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 10, x: 1, y: 3, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: -1, x: 2, y: 3, parentColumn: -1, status: undefined, data: [], isBlink: false },
+        { index: 18, x: 3, y: 3, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: -1, x: 4, y: 3, parentColumn: -1, status: undefined, data: [], isBlink: false },
+        { index: -1, x: 5, y: 3, parentColumn: -1, status: undefined, data: [], isBlink: false },
       ],
       [
-        { index: 4, x: 0, y: 4, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 11, x: 1, y: 4, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 12, x: 2, y: 4, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 19, x: 3, y: 4, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 20, x: 4, y: 4, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: -1, x: 5, y: 4, parentColumn: -1, status: undefined, data: [] },
+        { index: 4, x: 0, y: 4, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 11, x: 1, y: 4, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 12, x: 2, y: 4, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 19, x: 3, y: 4, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 20, x: 4, y: 4, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: -1, x: 5, y: 4, parentColumn: -1, status: undefined, data: [], isBlink: false },
       ],
       [
-        { index: 5, x: 0, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 6, x: 1, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }] },
-        { index: 13, x: 2, y: 5, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: -1, x: 3, y: 5, parentColumn: -1, status: undefined, data: [] },
-        { index: 21, x: 4, y: 5, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }] },
-        { index: 22, x: 5, y: 5, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }] },
+        { index: 5, x: 0, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 6, x: 1, y: 5, parentColumn: 0, status: false, data: [{ banker: false, player: true, tie: false }], isBlink: false },
+        { index: 13, x: 2, y: 5, parentColumn: 1, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: -1, x: 3, y: 5, parentColumn: -1, status: undefined, data: [], isBlink: false },
+        { index: 21, x: 4, y: 5, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
+        { index: 22, x: 5, y: 5, parentColumn: 3, status: true, data: [{ banker: true, player: false, tie: false }], isBlink: false },
       ],
     ];
 

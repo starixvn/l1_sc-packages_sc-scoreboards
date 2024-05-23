@@ -10,7 +10,7 @@ interface DragonTailNode {
   index: number;
   isEndTail: boolean;
   parentColumn: number;
-  isBlink: boolean;
+  isBlink?: boolean;
 }
 
 export class DragonTailBoard {

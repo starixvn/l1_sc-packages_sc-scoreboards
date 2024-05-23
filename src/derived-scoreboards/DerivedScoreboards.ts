@@ -6,7 +6,7 @@ export interface DerivedScoreboardPoint {
   column: number;
   row: number;
   status: boolean | undefined;
-  isBlink: boolean;
+  isBlink?: boolean;
 }
 
 interface IndexItem {

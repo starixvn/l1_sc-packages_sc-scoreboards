@@ -13,7 +13,7 @@
     "reg": "npm set registry http://npm.lumigame.com",
     "semantic-release": "semantic-release",
     "betaver": "npm version prerelease --preid beta",
-    "pubbeta": "npm publish --registry http://npm.lumigame.com --tag beta"
+    "pubbeta": "npm run build && npm publish --registry http://npm.lumigame.com --tag beta"
   },
   "author": {
     "email": "pentagon@luminetsoft.com",
