@@ -141,10 +141,10 @@ export class DerivedScoreboards<SettlementResult> {
   private getDerivedScoreboardsData(colGap: number, hasBlinkNode: boolean) {
     const beginIndex = this.getBeginIndexOfDerivedScoreboard(this.rawDataArr, colGap);
     if (beginIndex === -1) {
-      return hasBlinkNode && this.rawDataArr[colGap][0] !== undefined ? [true] : [];
+      return hasBlinkNode && this.rawDataArr?.[colGap]?.[0] !== undefined ? [true] : [];
     }
     const data = this.generateDerivedScoreboardsData(this.rawDataArr, this.indexArr, this.lengthArr, beginIndex, colGap);
-    return hasBlinkNode ? [...data, data[data.length - 1]] : data;
+    return hasBlinkNode ? [...data, data?.[data.length - 1] || true] : data;
   }
 
   updateBoard(data: boolean[], boardKey: "bigEyeBoy" | "smallRoad" | "cockroachPig", hasBlinkNode: boolean) {
