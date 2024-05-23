@@ -93,7 +93,7 @@ export class BigRoadScoreboard<InputType> {
 
     const lengthGroups = this.groups.length;
     for (let i = 0; i < lengthGroups; i++) {
-      const isEndTail = this.groups[i] != this.groups[i + 1];
+      const isEndTail = this.groups[i] !== this.groups[i + 1];
       this.dragonTailBoard.addNode(this.groups[i], isEndTail);
     }
 

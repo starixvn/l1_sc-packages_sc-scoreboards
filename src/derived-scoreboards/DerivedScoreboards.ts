@@ -151,7 +151,7 @@ export class DerivedScoreboards<SettlementResult> {
     const lengthGroups = data.length;
     this[boardKey].clear();
     for (let i = 0; i < lengthGroups; i++) {
-      const isEndTail = data[i] != data[i + 1];
+      const isEndTail = data[i] !== data[i + 1];
       this[boardKey].addNode(data[i], isEndTail, hasBlinkNode && i === lengthGroups - 1);
     }
   }
@@ -184,9 +184,9 @@ export class DerivedScoreboards<SettlementResult> {
     if (this.rawDataArr.length < 2) {
       return [undefined, undefined, undefined];
     }
-    let rawDataArr: boolean[][] = _.cloneDeep(this.rawDataArr);
-    let indexArr: IndexItem[] = _.cloneDeep(this.indexArr);
-    let lengthArr: number[] = _.cloneDeep(this.lengthArr);
+    const rawDataArr: boolean[][] = _.cloneDeep(this.rawDataArr);
+    const indexArr: IndexItem[] = _.cloneDeep(this.indexArr);
+    const lengthArr: number[] = _.cloneDeep(this.lengthArr);
     const lastIndex = [...this.rawDataArr].reverse().findIndex((a) => a.length > 0);
     const lastItem = this.rawDataArr[this.rawDataArr.length - 1 - lastIndex]?.[0];
     if (isPositive === lastItem) {

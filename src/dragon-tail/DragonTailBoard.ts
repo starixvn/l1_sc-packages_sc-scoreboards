@@ -91,7 +91,7 @@ export class DragonTailBoard {
 
       const lengthGroups = values.length;
       for (let i = 0; i < lengthGroups; i++) {
-        const isEndTail = values[i] != values[i + 1];
+        const isEndTail = values[i] !== values[i + 1];
         this.addNode(values[i], isEndTail);
       }
     }
