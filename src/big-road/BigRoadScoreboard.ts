@@ -13,6 +13,7 @@ export interface BigRoadScoreboardPoint<T> {
   data: T[];
   index: number;
   parentColumn: number;
+  isBlink: boolean;
 }
 
 export class BigRoadScoreboard<InputType> {
@@ -29,9 +30,9 @@ export class BigRoadScoreboard<InputType> {
     this.groups = [];
   }
 
-  initialize(input: InputType[]): void {
+  initialize(input: InputType[], hasBlinkNode = false): void {
     this.input = input;
-    this.loadDragonTailBoard();
+    this.loadDragonTailBoard(hasBlinkNode);
   }
 
   fifo(record: InputType): void {
@@ -56,6 +57,7 @@ export class BigRoadScoreboard<InputType> {
         const status = this.dragonTailBoard.getStatus(column, row);
         const index = this.dragonTailBoard.getIndex(column, row) ?? -1;
         const parentColumn = this.dragonTailBoard.getParentColumn(column, row) ?? -1;
+        const isBlink = this.dragonTailBoard.getIsBlink(column, row) ?? false;
 
         rowData.push({
           data: index !== -1 ? groups[index] : [],
@@ -64,6 +66,7 @@ export class BigRoadScoreboard<InputType> {
           status,
           index,
           parentColumn,
+          isBlink,
         });
       }
 
@@ -81,7 +84,7 @@ export class BigRoadScoreboard<InputType> {
     return this.dragonTailBoard.getHeight();
   }
 
-  private loadDragonTailBoard(): void {
+  private loadDragonTailBoard(hasBlinkNode = false): void {
     const groups = this.converter.group(this.input);
 
     this.groups = groups.map((group) => this.converter.convert(group)); /// [true,false,true]
@@ -93,5 +96,11 @@ export class BigRoadScoreboard<InputType> {
       const isEndTail = this.groups[i] != this.groups[i + 1];
       this.dragonTailBoard.addNode(this.groups[i], isEndTail);
     }
+
+    lengthGroups > 0 && hasBlinkNode && this.addBlinkNode();
+  }
+
+  private addBlinkNode() {
+    this.dragonTailBoard.addNode(this.groups[this.groups.length - 1], false, true);
   }
 }

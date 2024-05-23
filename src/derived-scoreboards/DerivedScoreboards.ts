@@ -6,6 +6,7 @@ export interface DerivedScoreboardPoint {
   column: number;
   row: number;
   status: boolean | undefined;
+  isBlink: boolean;
 }
 
 interface IndexItem {
@@ -32,11 +33,11 @@ export class DerivedScoreboards<SettlementResult> {
     this.cockroachPig = new DragonTailBoard(options);
   }
 
-  update(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][]) {
+  update(bigRoadData: BigRoadScoreboardPoint<SettlementResult>[][], hasBlinkNode = false) {
     this.transformDataFromBigRoadData(bigRoadData);
-    this.updateBigEyeBoy();
-    this.updateSmallRoad();
-    this.updateCockroachPig();
+    this.updateBigEyeBoy(hasBlinkNode);
+    this.updateSmallRoad(hasBlinkNode);
+    this.updateCockroachPig(hasBlinkNode);
   }
 
   getBeginIndexOfDerivedScoreboard(rawDataArr: boolean[][], colGap: number): number {
@@ -75,7 +76,7 @@ export class DerivedScoreboards<SettlementResult> {
       const rawData = [];
       for (const element of bigRoadData) {
         const item = element[columnIndex];
-        if (item.status !== undefined) {
+        if (item.status !== undefined && !item.isBlink) {
           if (item.parentColumn === columnIndex) {
             currentLength += 1;
             rawData.push(item.status);
@@ -119,36 +120,39 @@ export class DerivedScoreboards<SettlementResult> {
     return result;
   }
 
-  updateBigEyeBoy() {
+  updateBigEyeBoy(hasBlinkNode: boolean) {
     const colGap = 1;
-    const beginIndex = this.getBeginIndexOfDerivedScoreboard(this.rawDataArr, colGap);
-    const data =
-      beginIndex === -1 ? [] : this.generateDerivedScoreboardsData(this.rawDataArr, this.indexArr, this.lengthArr, beginIndex, colGap);
-    this.updateBoard(data, this.bigEyeBoyKey);
+    const data = this.getDerivedScoreboardsData(colGap, hasBlinkNode);
+    this.updateBoard(data, this.bigEyeBoyKey, hasBlinkNode);
   }
 
-  updateSmallRoad() {
+  updateSmallRoad(hasBlinkNode: boolean) {
     const colGap = 2;
-    const beginIndex = this.getBeginIndexOfDerivedScoreboard(this.rawDataArr, colGap);
-    const data =
-      beginIndex === -1 ? [] : this.generateDerivedScoreboardsData(this.rawDataArr, this.indexArr, this.lengthArr, beginIndex, colGap);
-    this.updateBoard(data, this.smallRoadKey);
+    const data = this.getDerivedScoreboardsData(colGap, hasBlinkNode);
+    this.updateBoard(data, this.smallRoadKey, hasBlinkNode);
   }
 
-  updateCockroachPig() {
+  updateCockroachPig(hasBlinkNode: boolean) {
     const colGap = 3;
-    const beginIndex = this.getBeginIndexOfDerivedScoreboard(this.rawDataArr, colGap);
-    const data =
-      beginIndex === -1 ? [] : this.generateDerivedScoreboardsData(this.rawDataArr, this.indexArr, this.lengthArr, beginIndex, colGap);
-    this.updateBoard(data, this.cockroachPigKey);
+    const data = this.getDerivedScoreboardsData(colGap, hasBlinkNode);
+    this.updateBoard(data, this.cockroachPigKey, hasBlinkNode);
   }
 
-  updateBoard(data: boolean[], boardKey: "bigEyeBoy" | "smallRoad" | "cockroachPig") {
+  private getDerivedScoreboardsData(colGap: number, hasBlinkNode: boolean) {
+    const beginIndex = this.getBeginIndexOfDerivedScoreboard(this.rawDataArr, colGap);
+    if (beginIndex === -1) {
+      return hasBlinkNode && this.rawDataArr[colGap][0] !== undefined ? [true] : [];
+    }
+    const data = this.generateDerivedScoreboardsData(this.rawDataArr, this.indexArr, this.lengthArr, beginIndex, colGap);
+    return hasBlinkNode ? [...data, data[data.length - 1]] : data;
+  }
+
+  updateBoard(data: boolean[], boardKey: "bigEyeBoy" | "smallRoad" | "cockroachPig", hasBlinkNode: boolean) {
     const lengthGroups = data.length;
     this[boardKey].clear();
     for (let i = 0; i < lengthGroups; i++) {
       const isEndTail = data[i] != data[i + 1];
-      this[boardKey].addNode(data[i], isEndTail);
+      this[boardKey].addNode(data[i], isEndTail, hasBlinkNode && i === lengthGroups - 1);
     }
   }
 
@@ -161,16 +165,18 @@ export class DerivedScoreboards<SettlementResult> {
 
       for (let column = 0; column < width; column++) {
         const status = this[key].getStatus(column, row);
+        const isBlink = this[key].getIsBlink(column, row) ?? false;
+
         rowData.push({
           column,
           row,
           status,
+          isBlink,
         });
       }
 
       result.push(rowData);
     }
-
     return result;
   }
 

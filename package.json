@@ -6,7 +6,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "dev": "tsc && node ./lib/demo/index.js",
-    "build": "git clean -Xdf && yarn install && tsc",
+    "build": "tsc",
     "build:watch": "tsc --watch",
     "test": "jest",
     "test-coverage": "jest --collect-coverage",

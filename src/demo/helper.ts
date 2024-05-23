@@ -14,13 +14,17 @@ export const getSettleResult = (data: number[]) => {
 const getData = (data: BigRoadScoreboardPoint<SettlementResult>[]) => {
   let result = "";
   for (const element of data) {
-    if (element.status) {
-      result += "+ ";
+    if (element.isBlink) {
+      result += "? ";
     } else {
-      if (element.status === false) {
-        result += "- ";
+      if (element.status) {
+        result += "+ ";
       } else {
-        result += "  ";
+        if (element.status === false) {
+          result += "- ";
+        } else {
+          result += "  ";
+        }
       }
     }
   }

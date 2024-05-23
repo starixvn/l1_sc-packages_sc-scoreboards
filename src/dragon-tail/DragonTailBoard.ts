@@ -10,6 +10,7 @@ interface DragonTailNode {
   index: number;
   isEndTail: boolean;
   parentColumn: number;
+  isBlink: boolean;
 }
 
 export class DragonTailBoard {
@@ -33,24 +34,32 @@ export class DragonTailBoard {
   }
 
   getStatus(x: number, y: number): boolean | undefined {
-    const position = DragonTailPosition.getInstance(x, y);
-    const node = this.nodes.get(position.getName());
+    const node = this.getNode(x, y);
 
     return node?.positive;
   }
 
   getIndex(x: number, y: number): number | undefined {
-    const position = DragonTailPosition.getInstance(x, y);
-    const node = this.nodes.get(position.getName());
+    const node = this.getNode(x, y);
 
     return node?.index;
   }
 
   getParentColumn(x: number, y: number): number | undefined {
-    const position = DragonTailPosition.getInstance(x, y);
-    const node = this.nodes.get(position.getName());
+    const node = this.getNode(x, y);
 
     return node?.parentColumn;
+  }
+
+  getIsBlink(x: number, y: number) {
+    const node = this.getNode(x, y);
+
+    return node?.isBlink;
+  }
+
+  private getNode(x: number, y: number) {
+    const position = DragonTailPosition.getInstance(x, y);
+    return this.nodes.get(position.getName());
   }
 
   getPosition(index: number): number[] {
@@ -88,7 +97,7 @@ export class DragonTailBoard {
     }
   }
 
-  addNode(positive: boolean, isEndTail: boolean) {
+  addNode(positive: boolean, isEndTail: boolean, isBlink = false) {
     const position = positive ? this.positivePosition : this.negativePosition;
     const node = {
       positive,
@@ -96,6 +105,7 @@ export class DragonTailBoard {
       index: this.index,
       isEndTail: isEndTail,
       parentColumn: position.parentColumn,
+      isBlink,
     };
 
     this.nodes.set(node.position.getName(), node);

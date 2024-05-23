@@ -7,14 +7,15 @@ export const start = () => {
   // blue: 1
   // red: 3
   // tie: 2
-  const dataTest = [3, 1, 1, 1, 1, 1, 1, 1, 1];
+  const dataTest = [3, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3];
   const settlementResult = getSettleResult(dataTest);
   const converter = new Converter();
   const bigRoad = new BigRoadScoreboard({ converter, height: 6 });
-  bigRoad.initialize(settlementResult);
-  const bigRoadData = bigRoad.rows();
   const derivedScoreboards = new DerivedScoreboards({ height: 6 });
-  derivedScoreboards.update(bigRoadData);
+  const hasBlinkNode = true;
+  bigRoad.initialize(settlementResult, hasBlinkNode);
+  const bigRoadData = bigRoad.rows();
+  derivedScoreboards.update(bigRoadData, hasBlinkNode);
   console.log(bigRoadData);
   consoleLogTable(bigRoadData);
   console.log("---------- big eye boy");
