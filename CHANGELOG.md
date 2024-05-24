@@ -1,3 +1,14 @@
+## [1.0.7](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.0.6...v1.0.7) (2024-05-24)
+
+
+### Bug Fixes
+
+* check null ([d8b7609](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/d8b7609d2732dea5eb1381d0e88723f6c126e32b))
+* code smell ([883fd1b](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/883fd1bf3071042161509576866b9e76d2575c46))
+* render blink in DerivedScoreboards ([a420a5e](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/a420a5e8d2de4a5378d5eedc357b8ddec1261d31))
+* render next blink node ([40a74eb](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/40a74ebf0dd4c3556f34bc042d346312ffd86fe6))
+* update job publish_npm ([f3c9bac](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/f3c9bac7c27f53ac271eac3bca0cc42df572a035))
+
 ## [1.0.6](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.0.5...v1.0.6) (2022-06-24)
 
 
