@@ -1,3 +1,10 @@
+# [1.1.0](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.0.7...v1.1.0) (2024-11-01)
+
+
+### Features
+
+* implement good road detection ([d0ed453](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/d0ed453955566ff8dcf1d70a2e1544dec1bd7d1b))
+
 ## [1.0.7](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.0.6...v1.0.7) (2024-05-24)
 
 
