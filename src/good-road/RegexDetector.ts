@@ -17,8 +17,14 @@ export class GoodRoadRegexDetector implements IGoodRoadDetector {
     const line = input.map((status) => Number(status)).join("");
 
     return this.patterns.reduce((result: GoodRoad, pattern) => {
-      if (result.x < 0) {
-        result = this.detectSinglePattern(line, board, pattern);
+      if (result.x >= 0) {
+        return result;
+      }
+
+      const detected = this.detectSinglePattern(line, board, pattern);
+
+      if (detected.x >= 0) {
+        return detected;
       }
 
       return result;

@@ -63,10 +63,15 @@ export class DragonTailBoard {
   }
 
   getPosition(index: number): number[] {
-    const values = [...this.nodes.values()];
-    const node = values.find((value) => value.index === index);
+    const node = this.getNodeByIndex(index);
 
     return node ? [node.position.x, node.position.y] : [];
+  }
+
+  getNodeByIndex(index: number) {
+    const values = [...this.nodes.values()];
+
+    return values.find((value) => value.index === index);
   }
 
   getHeight() {

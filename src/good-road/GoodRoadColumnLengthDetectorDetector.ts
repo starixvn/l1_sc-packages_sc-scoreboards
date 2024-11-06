@@ -5,10 +5,15 @@ export interface ColumnLengthPattern {
   columns: { length: number; exact: boolean }[];
   repeat: number;
   name?: string;
+  positive?: boolean;
 }
 
 export interface GoodRoadColumnLengthDetectorOptions {
   patterns: ColumnLengthPattern[];
+}
+
+export function buildPattern(base: ColumnLengthPattern, positive?: boolean) {
+  return Object.assign({}, base, { positive });
 }
 
 export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
@@ -23,8 +28,15 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
     const columns = this.getColumns(board);
 
     return this.patterns.reduce((result: GoodRoad, pattern) => {
-      if (result.x < 0) {
-        result = this.detectSinglePattern(pattern, columns, board);
+      if (result.x >= 0) {
+        return result;
+      }
+
+      const detected = this.detectSinglePattern(pattern, columns, board);
+      const positive = pattern.positive;
+
+      if (detected.x >= 0 && (typeof positive === "undefined" || board.getNodeByIndex(detected.x)?.positive === positive)) {
+        return detected;
       }
 
       return result;
