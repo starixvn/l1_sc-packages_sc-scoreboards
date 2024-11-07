@@ -1,3 +1,15 @@
+# [1.2.0](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.1.0...v1.2.0) (2024-11-07)
+
+
+### Bug Fixes
+
+* code smells ([b8e299b](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/b8e299bd18bf2a111a8021a059ba5a6c51a51566))
+
+
+### Features
+
+* allow input the node status while detecting the good road ([cb02a58](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/cb02a5852f88a6dc58e90872575d16bcd7537bee))
+
 # [1.1.0](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.0.7...v1.1.0) (2024-11-01)
 
 
