@@ -12,7 +12,7 @@ export interface GoodRoadColumnLengthDetectorOptions {
   patterns: ColumnLengthPattern[];
 }
 
-export function buildPattern(base: ColumnLengthPattern, positive?: boolean) {
+export function buildPattern(base: ColumnLengthPattern, positive: boolean) {
   return Object.assign({}, base, { positive });
 }
 
@@ -45,11 +45,11 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
 
   detectSinglePattern(pattern: ColumnLengthPattern, columns: number[][], board: DragonTailBoard): GoodRoad {
     const columnLengths = columns.map((column) => column.length);
-    const repeat = <T>(data: T[], times: number = 1) => [...Array(times)].map(() => data).reduce((acc, val) => acc.concat(val), []);
+    const repeat = <T>(data: T[], times = 1) => [...Array(times)].map(() => data).reduce((acc, val) => acc.concat(val), []);
     const patternColumns = repeat(pattern.columns, pattern.repeat || 1);
 
     const selectedColumns = columnLengths.reduce((result, length, index) => {
-      if (patternColumns.length > index && result.length == index) {
+      if (patternColumns.length > index && result.length === index) {
         const patternColumn = patternColumns[index];
 
         if ((patternColumn.exact && patternColumn.length === length) || (!patternColumn.exact && patternColumn.length <= length)) {
