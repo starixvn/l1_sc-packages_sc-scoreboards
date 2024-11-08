@@ -1,3 +1,11 @@
+## [1.2.1](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.2.0...v1.2.1) (2024-11-08)
+
+
+### Bug Fixes
+
+* allow to set good road detector ([eb8e824](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/eb8e824f3a55920c7ec7cc8b252b081140af4d14))
+* allow to update patterns ([3c2c67a](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/3c2c67ac1cfbe0fb9656ec3fdd6939f8e2470865))
+
 # [1.2.0](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.1.0...v1.2.0) (2024-11-07)
 
 
