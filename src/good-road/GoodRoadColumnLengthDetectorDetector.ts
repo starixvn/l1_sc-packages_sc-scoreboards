@@ -17,11 +17,15 @@ export function buildPattern(base: ColumnLengthPattern, positive: boolean) {
 }
 
 export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
-  private readonly patterns: ColumnLengthPattern[];
+  private patterns: ColumnLengthPattern[];
   private readonly defaultResult = { x: -1, width: 0, height: 0 };
 
   constructor(options: GoodRoadColumnLengthDetectorOptions) {
     this.patterns = options.patterns;
+  }
+
+  updatePatterns(patterns: ColumnLengthPattern[]) {
+    this.patterns = patterns;
   }
 
   detect(input: boolean[], board: DragonTailBoard): GoodRoad {
