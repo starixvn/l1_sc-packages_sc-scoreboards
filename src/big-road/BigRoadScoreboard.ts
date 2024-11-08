@@ -21,7 +21,7 @@ export interface BigRoadScoreboardPoint<T> {
 export class BigRoadScoreboard<InputType> {
   private readonly dragonTailBoard: DragonTailBoard;
   private readonly converter: IConverter<InputType>;
-  private readonly goodRoadDetectors: IGoodRoadDetector[];
+  private goodRoadDetectors: IGoodRoadDetector[];
 
   private input: InputType[];
   private groups: boolean[];
@@ -32,6 +32,10 @@ export class BigRoadScoreboard<InputType> {
     this.input = [];
     this.groups = [];
     this.goodRoadDetectors = options.goodRoadDetectors ?? [];
+  }
+
+  setGoodRoadDetectors(detectors: IGoodRoadDetector[]) {
+    this.goodRoadDetectors = detectors;
   }
 
   initialize(input: InputType[], hasBlinkNode = false): void {
