@@ -39,8 +39,12 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
       const detected = this.detectSinglePattern(pattern, columns, board);
       const positive = pattern.positive;
 
-      if (detected.x >= 0 && (typeof positive === "undefined" || board.getNodeByIndex(detected.x)?.positive === positive)) {
-        return detected;
+      if (detected.x >= 0) {
+        const lastNode = board.getNodeByIndex(detected.x + detected.width - 1);
+
+        if (typeof positive === "undefined" || (lastNode?.positive === positive && !lastNode?.isBlink)) {
+          return detected;
+        }
       }
 
       return result;
