@@ -1,3 +1,10 @@
+## [1.2.2](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.2.1...v1.2.2) (2024-11-20)
+
+
+### Bug Fixes
+
+* update column length detector ([4022879](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/4022879885c8f2585974ba0019104359c8dd7614))
+
 ## [1.2.1](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.2.0...v1.2.1) (2024-11-08)
 
 
