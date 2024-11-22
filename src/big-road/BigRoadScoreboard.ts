@@ -107,6 +107,7 @@ export class BigRoadScoreboard<InputType> {
   }
 
   private loadDragonTailBoard(hasBlinkNode = false): void {
+    const inputHasBlink = this.input.findIndex((item: any) => item.blink) !== -1;
     const groups = this.converter.group(this.input);
 
     this.groups = groups.map((group) => this.converter.convert(group)); /// [true,false,true]
@@ -116,9 +117,9 @@ export class BigRoadScoreboard<InputType> {
     const lengthGroups = this.groups.length;
     for (let i = 0; i < lengthGroups; i++) {
       const isEndTail = this.groups[i] !== this.groups[i + 1];
-      this.dragonTailBoard.addNode(this.groups[i], isEndTail);
+      const isLast = i === lengthGroups - 1;
+      this.dragonTailBoard.addNode(this.groups[i], isEndTail, inputHasBlink && isLast);
     }
-
     lengthGroups > 0 && hasBlinkNode && this.addBlinkNode();
   }
 
