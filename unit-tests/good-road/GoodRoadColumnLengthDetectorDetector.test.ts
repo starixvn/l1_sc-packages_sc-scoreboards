@@ -37,7 +37,7 @@ const tie = {
 };
 
 const result = {
-  oneHomeTwoRooms: [big, small, small, big, small, small],
+  oneHomeTwoRooms: [small, small, big, small, small, big, small, small, big],
   longRoad: [small, big, big, big, big, big, big],
   chase: [big, big, small, big, small, big, small],
   adjacentTwoColumns: [big, small, big, big, big, small, small],
@@ -62,7 +62,7 @@ describe("GoodRoadColumnLengthDetectorDetector", () => {
     const actual = bigRoad.getGoodRoad();
 
     // Assert
-    expect(actual).toEqual({ x: 0, width: 4, height: 2, name: "ONE_HOME_TWO_ROOMS" });
+    expect(actual).toEqual({ x: 1, width: 5, height: 2, name: "ONE_HOME_TWO_ROOMS" });
   });
 
   it("should detect one home two rooms for positive key", () => {
@@ -75,7 +75,7 @@ describe("GoodRoadColumnLengthDetectorDetector", () => {
     const actual = bigRoad.getGoodRoad();
 
     // Assert
-    expect(actual).toEqual({ x: 0, width: 4, height: 2, name: "ONE_HOME_TWO_ROOMS" });
+    expect(actual).toEqual({ x: 1, width: 5, height: 2, name: "ONE_HOME_TWO_ROOMS" });
   });
 
   it("should not detect one home two rooms for negative key", () => {

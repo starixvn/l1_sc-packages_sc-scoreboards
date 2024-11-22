@@ -38,13 +38,9 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
 
       const detected = this.detectSinglePattern(pattern, columns, board);
       const positive = pattern.positive;
-
-      if (detected.x >= 0) {
-        const node = board.getNodeByIndex(detected.x);
-
-        if (typeof positive === "undefined" || node?.positive === positive) {
-          return detected;
-        }
+      const firstNode = board.getNodeByIndex(columns[detected.x][0]);
+      if (detected.x >= 0 && (typeof positive === "undefined" || firstNode?.positive === positive)) {
+        return detected;
       }
 
       return result;
@@ -69,19 +65,48 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
   }
 
   private findMatchingColumns(pattern: ColumnLengthPattern, columnLengths: number[]): number[] {
-    return columnLengths.reduce((result, length, index) => {
-      if (result.length !== index) {
-        return result;
+    const patternColumns = pattern.columns;
+    const selectedColumns: number[] = [];
+    for (let startIndex = 0; startIndex < columnLengths.length; startIndex++) {
+      let isMatch = true;
+
+      for (let i = 0; i < patternColumns.length; i++) {
+        const columnIndex = startIndex + i;
+        if (columnIndex >= columnLengths.length) {
+          isMatch = false;
+          break;
+        }
+
+        const length = columnLengths[columnIndex];
+        const patternColumn = patternColumns[i];
+
+        if (!this.isMatchPattern(length, patternColumn)) {
+          isMatch = false;
+          break;
+        }
       }
 
-      const patternColumn = this.getPatternColumnForIndex(pattern, index);
+      if (isMatch) {
+        for (let i = startIndex + patternColumns.length; i < columnLengths.length; i++) {
+          const length = columnLengths[i];
+          const patternColumn = patternColumns[(i - startIndex) % patternColumns.length];
 
-      if (!patternColumn) {
-        return result;
+          if (!this.isMatchPattern(length, patternColumn)) {
+            isMatch = false;
+            break;
+          }
+        }
       }
 
-      return this.isMatchPattern(patternColumn, length) ? [...result, index] : result;
-    }, [] as number[]);
+      if (isMatch) {
+        for (let i = startIndex; i < columnLengths.length; i++) {
+          selectedColumns.push(i);
+        }
+        break;
+      }
+    }
+
+    return selectedColumns;
   }
 
   private getPatternColumnForIndex(pattern: ColumnLengthPattern, index: number): { length: number; exact: boolean } | null {
@@ -110,9 +135,11 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
 
     return this.getGoodRoad(start, end, board, name);
   }
-
-  private isMatchPattern(pattern: { length: number; exact: boolean }, length: number) {
-    return (pattern.exact && pattern.length === length) || (!pattern.exact && pattern.length <= length);
+  private isMatchPattern(length: number, pattern: { length: number; exact: boolean }): boolean {
+    if (pattern.exact) {
+      return length === pattern.length;
+    }
+    return length >= pattern.length;
   }
 
   protected getColumns(board: DragonTailBoard): number[][] {
@@ -136,6 +163,7 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
 
     board.setHeight(height);
 
+    columns.reverse();
     return columns;
   }
 

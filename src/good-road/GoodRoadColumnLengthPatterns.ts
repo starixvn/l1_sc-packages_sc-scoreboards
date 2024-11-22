@@ -25,10 +25,10 @@ export const CHASE = {
 export const ONE_HOME_TWO_ROOMS = {
   name: "ONE_HOME_TWO_ROOMS",
   columns: [
-    { exact: true, length: 2 },
     { exact: true, length: 1 },
     { exact: true, length: 2 },
     { exact: true, length: 1 },
+    { exact: true, length: 2 },
   ],
 };
 
