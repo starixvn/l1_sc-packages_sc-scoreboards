@@ -51,6 +51,7 @@ describe("GoodRoadColumnLengthDetectorDetector", () => {
   beforeEach(() => {
     bigRoad = new BigRoadScoreboard({ converter, height: 6 });
   });
+
   it("should detect one home two rooms", () => {
     // Arrange
     const detector = new GoodRoadColumnLengthDetectorDetector({ patterns: [ONE_HOME_TWO_ROOMS] });
@@ -62,6 +63,32 @@ describe("GoodRoadColumnLengthDetectorDetector", () => {
 
     // Assert
     expect(actual).toEqual({ x: 0, width: 4, height: 2, name: "ONE_HOME_TWO_ROOMS" });
+  });
+
+  it("should detect one home two rooms for positive key", () => {
+    // Arrange
+    const detector = new GoodRoadColumnLengthDetectorDetector({ patterns: [{ ...ONE_HOME_TWO_ROOMS, positive: true }] });
+    bigRoad.setGoodRoadDetectors([detector]);
+    bigRoad.initialize(result.oneHomeTwoRooms);
+
+    // Act
+    const actual = bigRoad.getGoodRoad();
+
+    // Assert
+    expect(actual).toEqual({ x: 0, width: 4, height: 2, name: "ONE_HOME_TWO_ROOMS" });
+  });
+
+  it("should not detect one home two rooms for negative key", () => {
+    // Arrange
+    const detector = new GoodRoadColumnLengthDetectorDetector({ patterns: [{ ...ONE_HOME_TWO_ROOMS, positive: false }] });
+    bigRoad.setGoodRoadDetectors([detector]);
+    bigRoad.initialize(result.oneHomeTwoRooms);
+
+    // Act
+    const actual = bigRoad.getGoodRoad();
+
+    // Assert
+    expect(actual).toEqual({ x: -1, width: 0, height: 0 });
   });
 
   it("should detect long road", () => {
