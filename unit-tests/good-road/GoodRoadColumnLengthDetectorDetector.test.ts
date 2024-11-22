@@ -52,6 +52,7 @@ const result = {
   oneHomeTwoRooms: [small, small, big, small, small, big, small, small, big],
   oneHomeTwoRooms_blink: [small, small, big, small, small, big, small, small, small_blink],
   longRoad: [small, big, big, big, big, big, big],
+  longRoad_2: [small, big, big, big, big, small, small, small, small],
   chase: [big, big, small, big, small, big, small],
   adjacentTwoColumns: [big, small, big, big, big, small, small],
 };
@@ -128,6 +129,19 @@ describe("GoodRoadColumnLengthDetectorDetector", () => {
 
     // Assert
     expect(actual).toEqual({ x: 1, width: 1, height: 6, name: "LONG_ROAD" });
+  });
+
+  it("should detect only 4small long road 4big 4small", () => {
+    // Arrange
+    const detector = new GoodRoadColumnLengthDetectorDetector({ patterns: [LONG_ROAD] });
+    bigRoad.setGoodRoadDetectors([detector]);
+    bigRoad.initialize(result.longRoad_2);
+
+    // Act
+    const actual = bigRoad.getGoodRoad();
+
+    // Assert
+    expect(actual).toEqual({ x: 2, width: 1, height: 4, name: "LONG_ROAD" });
   });
 
   it("should detect chase", () => {

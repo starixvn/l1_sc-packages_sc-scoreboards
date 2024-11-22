@@ -88,7 +88,7 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
       let isMatch = this.checkBeginPattern(patternColumns, startIndex, columnLengths);
 
       if (isMatch) {
-        isMatch = this.checkMatchedToTheEnd(startIndex, patternColumns, columnLengths, isMatch);
+        isMatch = this.checkMatchedToTheEnd(pattern, startIndex, patternColumns, columnLengths);
       }
 
       if (isMatch) {
@@ -103,11 +103,16 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
   }
 
   private checkMatchedToTheEnd(
+    pattern: ColumnLengthPattern,
     startIndex: number,
     patternColumns: { length: number; exact: boolean }[],
-    columnLengths: number[],
-    isMatch: boolean
+    columnLengths: number[]
   ) {
+    let isMatch = true;
+    if (!pattern.repeat) {
+      return startIndex + patternColumns.length === columnLengths.length;
+    }
+
     for (let i = startIndex + patternColumns.length; i < columnLengths.length; i++) {
       const length = columnLengths[i];
       const patternColumn = patternColumns[(i - startIndex) % patternColumns.length];
