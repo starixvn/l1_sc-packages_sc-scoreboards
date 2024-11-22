@@ -3,7 +3,7 @@ import { GoodRoad, IGoodRoadDetector } from "./IGoodRoadDetector";
 
 export interface ColumnLengthPattern {
   columns: { length: number; exact: boolean }[];
-  repeat: number;
+  repeat?: boolean;
   name?: string;
   positive?: boolean;
 }
@@ -40,9 +40,9 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
       const positive = pattern.positive;
 
       if (detected.x >= 0) {
-        const lastNode = board.getNodeByIndex(detected.x + detected.width - 1);
+        const node = board.getNodeByIndex(detected.x);
 
-        if (typeof positive === "undefined" || (lastNode?.positive === positive && !lastNode?.isBlink)) {
+        if (typeof positive === "undefined" || node?.positive === positive) {
           return detected;
         }
       }
@@ -53,14 +53,25 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
 
   detectSinglePattern(pattern: ColumnLengthPattern, columns: number[][], board: DragonTailBoard): GoodRoad {
     const columnLengths = columns.map((column) => column.length);
-    const repeat = <T>(data: T[], times = 1) => [...Array(times)].map(() => data).reduce((acc, val) => acc.concat(val), []);
-    const patternColumns = repeat(pattern.columns, pattern.repeat || 1);
 
     const selectedColumns = columnLengths.reduce((result, length, index) => {
-      if (patternColumns.length > index && result.length === index) {
-        const patternColumn = patternColumns[index];
+      if (result.length !== index) {
+        return result;
+      }
 
-        if ((patternColumn.exact && patternColumn.length === length) || (!patternColumn.exact && patternColumn.length <= length)) {
+      if (pattern.columns.length > index) {
+        const patternColumn = pattern.columns[index];
+
+        if (this.isMatchPattern(patternColumn, length)) {
+          result.push(index);
+        }
+      }
+
+      if (pattern.columns.length <= index && pattern.repeat) {
+        const patternIndex = index % pattern.columns.length;
+        const patternColumn = pattern.columns[patternIndex];
+
+        if (this.isMatchPattern(patternColumn, length)) {
           result.push(index);
         }
       }
@@ -80,6 +91,10 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
     }
 
     return this.defaultResult;
+  }
+
+  private isMatchPattern(pattern: { length: number; exact: boolean }, length: number) {
+    return (pattern.exact && pattern.length === length) || (!pattern.exact && pattern.length <= length);
   }
 
   protected getColumns(board: DragonTailBoard): number[][] {

@@ -1,7 +1,6 @@
 export const LONG_ROAD = {
   name: "LONG_ROAD",
   columns: [{ exact: false, length: 4 }],
-  repeat: 0,
 };
 
 export const ADJACENT_TWO_COLUMNS = {
@@ -10,7 +9,6 @@ export const ADJACENT_TWO_COLUMNS = {
     { exact: false, length: 2 },
     { exact: false, length: 2 },
   ],
-  repeat: 0,
 };
 
 export const CHASE = {
@@ -21,7 +19,7 @@ export const CHASE = {
     { exact: true, length: 1 },
     { exact: true, length: 1 },
   ],
-  repeat: 50,
+  repeat: true,
 };
 
 export const ONE_HOME_TWO_ROOMS = {
@@ -32,7 +30,6 @@ export const ONE_HOME_TWO_ROOMS = {
     { exact: true, length: 2 },
     { exact: true, length: 1 },
   ],
-  repeat: 0,
 };
 
 export const SEPARATED = {
@@ -46,7 +43,6 @@ export const SEPARATED = {
     { exact: false, length: 1 },
     { exact: true, length: 1 },
   ],
-  repeat: 0,
 };
 
 export const PBHOP = {
@@ -59,7 +55,6 @@ export const PBHOP = {
     { exact: false, length: 1 },
     { exact: true, length: 1 },
   ],
-  repeat: 0,
 };
 
 export const SYMMETRICAL_PATTERNS = [SEPARATED, LONG_ROAD, ADJACENT_TWO_COLUMNS, CHASE, ONE_HOME_TWO_ROOMS, PBHOP];
