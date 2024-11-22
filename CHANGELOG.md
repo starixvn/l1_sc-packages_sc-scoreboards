@@ -1,3 +1,10 @@
+## [1.2.3](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.2.2...v1.2.3) (2024-11-22)
+
+
+### Bug Fixes
+
+* good road column detector ([3492401](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/349240186a47540b857cb71a376378d8460f8b61))
+
 ## [1.2.2](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.2.1...v1.2.2) (2024-11-20)
 
 
