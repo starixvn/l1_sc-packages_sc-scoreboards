@@ -25,10 +25,22 @@ const big = {
   small: false,
   tie: false,
 };
+const big_blink = {
+  big: true,
+  small: false,
+  tie: false,
+  blink: true,
+};
 const small = {
   big: false,
   small: true,
   tie: false,
+};
+const small_blink = {
+  big: false,
+  small: true,
+  tie: false,
+  blink: true,
 };
 const tie = {
   big: false,
@@ -38,6 +50,7 @@ const tie = {
 
 const result = {
   oneHomeTwoRooms: [small, small, big, small, small, big, small, small, big],
+  oneHomeTwoRooms_blink: [small, small, big, small, small, big, small, small, small_blink],
   longRoad: [small, big, big, big, big, big, big],
   chase: [big, big, small, big, small, big, small],
   adjacentTwoColumns: [big, small, big, big, big, small, small],
@@ -76,6 +89,19 @@ describe("GoodRoadColumnLengthDetectorDetector", () => {
 
     // Assert
     expect(actual).toEqual({ x: 1, width: 5, height: 2, name: "ONE_HOME_TWO_ROOMS" });
+  });
+
+  it("should detect one home two rooms with blink for positive key", () => {
+    // Arrange
+    const detector = new GoodRoadColumnLengthDetectorDetector({ patterns: [{ ...ONE_HOME_TWO_ROOMS, positive: true }] });
+    bigRoad.setGoodRoadDetectors([detector]);
+    bigRoad.initialize(result.oneHomeTwoRooms_blink);
+
+    // Act
+    const actual = bigRoad.getGoodRoad();
+
+    // Assert
+    expect(actual).toEqual({ x: 1, width: 4, height: 3, name: "ONE_HOME_TWO_ROOMS" });
   });
 
   it("should not detect one home two rooms for negative key", () => {
