@@ -85,34 +85,10 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
     const patternColumns = pattern.columns;
     const selectedColumns: number[] = [];
     for (let startIndex = 0; startIndex < columnLengths.length; startIndex++) {
-      let isMatch = true;
-
-      for (let i = 0; i < patternColumns.length; i++) {
-        const columnIndex = startIndex + i;
-        if (columnIndex >= columnLengths.length) {
-          isMatch = false;
-          break;
-        }
-
-        const length = columnLengths[columnIndex];
-        const patternColumn = patternColumns[i];
-
-        if (!this.isMatchPattern(length, patternColumn)) {
-          isMatch = false;
-          break;
-        }
-      }
+      let isMatch = this.checkBeginPattern(patternColumns, startIndex, columnLengths);
 
       if (isMatch) {
-        for (let i = startIndex + patternColumns.length; i < columnLengths.length; i++) {
-          const length = columnLengths[i];
-          const patternColumn = patternColumns[(i - startIndex) % patternColumns.length];
-
-          if (!this.isMatchPattern(length, patternColumn)) {
-            isMatch = false;
-            break;
-          }
-        }
+        isMatch = this.checkMatchedToTheEnd(startIndex, patternColumns, columnLengths, isMatch);
       }
 
       if (isMatch) {
@@ -124,6 +100,45 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
     }
 
     return selectedColumns;
+  }
+
+  private checkMatchedToTheEnd(
+    startIndex: number,
+    patternColumns: { length: number; exact: boolean }[],
+    columnLengths: number[],
+    isMatch: boolean
+  ) {
+    for (let i = startIndex + patternColumns.length; i < columnLengths.length; i++) {
+      const length = columnLengths[i];
+      const patternColumn = patternColumns[(i - startIndex) % patternColumns.length];
+
+      if (!this.isMatchPattern(length, patternColumn)) {
+        isMatch = false;
+        break;
+      }
+    }
+    return isMatch;
+  }
+
+  private checkBeginPattern(patternColumns: { length: number; exact: boolean }[], startIndex: number, columnLengths: number[]) {
+    let isMatch = true;
+
+    for (let i = 0; i < patternColumns.length; i++) {
+      const columnIndex = startIndex + i;
+      if (columnIndex >= columnLengths.length) {
+        isMatch = false;
+        break;
+      }
+
+      const length = columnLengths[columnIndex];
+      const patternColumn = patternColumns[i];
+
+      if (!this.isMatchPattern(length, patternColumn)) {
+        isMatch = false;
+        break;
+      }
+    }
+    return isMatch;
   }
 
   private getPatternColumnForIndex(pattern: ColumnLengthPattern, index: number): { length: number; exact: boolean } | null {
