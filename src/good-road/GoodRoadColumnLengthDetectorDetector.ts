@@ -50,11 +50,16 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
   detectSinglePattern(pattern: ColumnLengthPattern, columns: number[][], board: DragonTailBoard): GoodRoad {
     const columnLengths = columns.map((column) => column.length);
 
-    const lastColumn = columns[columns.length - 1];
-    const lastNode = board.getNodeByIndex(lastColumn[lastColumn.length - 1]);
-    if (lastNode?.isBlink) {
-      columnLengths[columns.length - 1] -= 1;
+    if (columns.length > 0) {
+      const lastColumn = columns[columns.length - 1];
+      if (lastColumn.length === 0) {
+        const lastNode = board.getNodeByIndex(lastColumn[lastColumn.length - 1]);
+        if (lastNode?.isBlink) {
+          columnLengths[columns.length - 1] -= 1;
+        }
+      }
     }
+
     const selectedColumns = this.findMatchingColumns(pattern, columnLengths);
 
     if (!this.hasEnoughMatchingColumns(selectedColumns, pattern)) {
