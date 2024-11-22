@@ -113,6 +113,10 @@ export class DragonTailBoard {
       isBlink,
     };
 
+    if (isBlink) {
+      console.log("blink node ---------------- ", node.position.getName());
+    }
+
     this.nodes.set(node.position.getName(), node);
     this.updateNextPositions(node, positive);
   }
