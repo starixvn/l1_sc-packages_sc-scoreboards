@@ -58,7 +58,7 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
 
     if (columns.length > 0) {
       const lastColumn = columns[columns.length - 1];
-      if (lastColumn.length === 0) {
+      if (lastColumn.length > 0) {
         const lastNode = board.getNodeByIndex(lastColumn[lastColumn.length - 1]);
         if (lastNode?.isBlink) {
           columnLengths[columns.length - 1] -= 1;
