@@ -51,7 +51,7 @@ const tie = {
 const result = {
   oneHomeTwoRooms: [small, small, big, small, small, big, small, small, big],
   oneHomeTwoRooms_blink: [small, small, big, small, small, big, small, small, small_blink],
-  longRoad: [small, big, big, big, big, big, big],
+  longRoad: [small, big, big, big, big, big, big, big, big, big, big, big],
   longRoad_2: [small, big, big, big, big, small, small, small, small],
   chase: [big, big, small, big, small, big, small],
   adjacentTwoColumns: [big, small, big, big, big, small, small],
@@ -128,7 +128,7 @@ describe("GoodRoadColumnLengthDetectorDetector", () => {
     const actual = bigRoad.getGoodRoad();
 
     // Assert
-    expect(actual).toEqual({ x: 1, width: 1, height: 6, name: "LONG_ROAD" });
+    expect(actual).toEqual({ x: 1, width: 6, height: 6, name: "LONG_ROAD" });
   });
 
   it("should detect only 4small long road 4big 4small", () => {

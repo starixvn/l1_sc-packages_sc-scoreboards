@@ -90,14 +90,14 @@ export class DragonTailBoard {
       this.height = height;
 
       const nodes = [...this.nodes.values()].sort((a, b) => a.index - b.index);
-      const values = nodes.map((node) => node.positive);
+      const values = nodes.map((node) => ({ positive: node.positive, isBlink: node?.isBlink }));
 
       this.clear();
 
       const lengthGroups = values.length;
       for (let i = 0; i < lengthGroups; i++) {
         const isEndTail = values[i] !== values[i + 1];
-        this.addNode(values[i], isEndTail);
+        this.addNode(values[i].positive, isEndTail, values[i].isBlink);
       }
     }
   }
