@@ -182,7 +182,7 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
   protected getColumns(board: DragonTailBoard): number[][] {
     const columns: number[][] = [];
 
-    for (let x = board.getWidth() - 1; x > -1; x--) {
+    for (let x = 0; x < board.getWidth(); x++) {
       const column = [];
       for (let y = 0; y < board.size(); y++) {
         const index = board.getIndex(x, y);
@@ -195,7 +195,6 @@ export class GoodRoadColumnLengthDetectorDetector implements IGoodRoadDetector {
       columns.push(column);
     }
 
-    columns.reverse();
     return columns;
   }
 
