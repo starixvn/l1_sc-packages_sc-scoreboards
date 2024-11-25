@@ -1,3 +1,10 @@
+## [1.2.4](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.2.3...v1.2.4) (2024-11-25)
+
+
+### Bug Fixes
+
+* increase version ([5cac23d](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/5cac23da69f82ee61b7e88f2870dd65eb3c6b69a))
+
 ## [1.2.3](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.2.2...v1.2.3) (2024-11-22)
 
 
