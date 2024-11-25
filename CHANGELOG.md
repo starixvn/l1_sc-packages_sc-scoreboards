@@ -1,3 +1,10 @@
+## [1.3.1](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.3.0...v1.3.1) (2024-11-25)
+
+
+### Bug Fixes
+
+* get wrong column when long road on tail ([aa926be](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/commit/aa926be6aeb996b09b9a4b32e0907903c94a34e5))
+
 # [1.3.0](https://git3.nexdev.net/l1/sc-packages/sc-scoreboards/compare/v1.2.4...v1.3.0) (2024-11-25)
 
 
